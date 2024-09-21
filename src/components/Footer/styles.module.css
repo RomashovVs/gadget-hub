@@ -1,0 +1,111 @@
+.footer {
+    width: 100%;
+    min-height: 25svh;
+    background-color: #0c368a;
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    left: 17.37%;
+    right: 75.32%;
+    top: 19.23%;
+    bottom: 63.46%;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 150%;
+    /* identical to box height, or 36px */
+    display: flex;
+    align-items: center;
+
+    color: #b7ceff;
+    width: max-content;
+}
+
+.description {
+    position: absolute;
+    left: 17.37%;
+    right: 62%;
+    top: 38.46%;
+    bottom: 50%;
+
+    /* Paragraph 16 */
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #84adff;
+}
+
+.licence {
+    position: absolute;
+    width: 369px;
+    /* left: calc(50% - 369px / 2 - 435.5px); */
+    left: 17.37%;
+    top: 64.42%;
+    bottom: 24.04%;
+
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #84adff;
+}
+
+.phoneIcon {
+    position: absolute;
+    left: 51.26%;
+    right: 47.05%;
+    top: 20.19%;
+    bottom: 64.42%;
+}
+
+.phone {
+    position: absolute;
+    left: 53.58%;
+    right: 35%;
+    top: 20.67%;
+    bottom: 64.42%;
+
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    display: flex;
+    align-items: center;
+
+    color: #b7ceff;
+    width: max-content;
+}
+
+.vkLogo {
+    position: absolute;
+    left: 74.84%;
+    right: 23.26%;
+    top: 19.23%;
+    bottom: 63.46%;
+}
+
+.telegramLogo {
+    position: absolute;
+    left: 77.79%;
+    right: 20.32%;
+    top: 19.23%;
+    bottom: 63.46%;
+}
+
+.whatsAppLogo {
+    position: absolute;
+    left: 80.74%;
+    right: 17.37%;
+    top: 19.23%;
+    bottom: 63.46%;
+}
