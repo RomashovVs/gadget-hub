@@ -9,6 +9,9 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@ant-design/nextjs-registry": "^1.0.1",
+        "antd": "^5.20.6",
+        "classnames": "^2.5.1",
         "next": "14.2.12",
         "react": "18",
         "react-dom": "18"
