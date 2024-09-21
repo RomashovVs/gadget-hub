@@ -1,7 +1,9 @@
 import type {Metadata} from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import {AntdRegistry} from '@ant-design/nextjs-registry';
+import '@mantine/core/styles.css';
+
+import {ColorSchemeScript, MantineProvider} from '@mantine/core';
 
 export const metadata: Metadata = {
     title: 'Gadget Hub',
@@ -15,8 +17,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <ColorSchemeScript />
             <body>
-                <AntdRegistry>{children}</AntdRegistry>
+                <MantineProvider>{children}</MantineProvider>
             </body>
         </html>
     );
