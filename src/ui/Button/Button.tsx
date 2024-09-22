@@ -1,13 +1,15 @@
 import {ButtonHTMLAttributes, memo} from 'react';
 import classNames from 'classnames';
-import {Button as ButtonMantine, ButtonProps as ButtonPropsMantine} from '@mantine/core';
+import {Button as MantineButton, ButtonProps as MantineButtonProps} from '@mantine/core';
 
 import styles from './styles.module.css';
 
-interface Props extends ButtonPropsMantine {}
+interface Props extends MantineButtonProps {
+    type?: 'submit' | 'button' | 'reset';
+}
 
 export const Button = memo(function Button(props: Props) {
     const {className, ...other} = props;
 
-    return <ButtonMantine className={classNames(styles.button, className)} {...other} />;
+    return <MantineButton className={classNames(styles.button, className)} {...other} />;
 });

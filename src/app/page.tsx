@@ -5,7 +5,7 @@ import {Footer, Header} from '@/components';
 export default function Home() {
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <div className={styles.page}>
                 <main className={styles.main}>
                     <Image
@@ -19,7 +19,7 @@ export default function Home() {
                     Пример магазина с иконкой
                 </main>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }

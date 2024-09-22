@@ -4,6 +4,7 @@ import './globals.css';
 import '@mantine/core/styles.css';
 
 import {ColorSchemeScript, MantineProvider} from '@mantine/core';
+import {Footer, Header} from '@/components';
 
 export const metadata: Metadata = {
     title: 'Gadget Hub',
@@ -22,7 +23,11 @@ export default function RootLayout({
             </head>
 
             <body>
-                <MantineProvider>{children}</MantineProvider>
+                <MantineProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </MantineProvider>
             </body>
         </html>
     );
