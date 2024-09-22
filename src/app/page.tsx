@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-import {Footer, Header} from '@/components';
+import {Contacts, Footer, Header} from '@/components';
 
 export default function Home() {
     return (
         <>
-            {/* <Header /> */}
             <div className={styles.page}>
                 <main className={styles.main}>
                     <Image
@@ -17,9 +16,9 @@ export default function Home() {
                         priority
                     />
                     Пример магазина с иконкой
+                    <Contacts />
                 </main>
             </div>
-            {/* <Footer /> */}
         </>
     );
 }
