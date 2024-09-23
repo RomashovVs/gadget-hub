@@ -2,7 +2,7 @@ import {memo} from 'react';
 import {Button} from '@/ui';
 
 import styles from './styles.module.css';
-import {IconCategoryFilled, IconUserFilled} from '@tabler/icons-react';
+import {IconCategoryFilled, IconShoppingCartCog, IconUserFilled} from '@tabler/icons-react';
 
 export const Header = memo(function Header() {
     return (
@@ -14,6 +14,12 @@ export const Header = memo(function Header() {
                 <a href="/">
                     <Button className={styles.button} leftSection={<IconCategoryFilled size={16} />}>
                         Каталог
+                    </Button>
+                </a>
+
+                <a href="/order">
+                    <Button leftSection={<IconShoppingCartCog size={16} />} className={styles.button}>
+                        Корзина
                     </Button>
                 </a>
 
