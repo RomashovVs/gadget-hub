@@ -23,20 +23,16 @@ const OrderBacketLayout = memo(function OrderBacketLayout(props: Props) {
     }, [pathname]);
 
     return (
-        <>
-            <div className={styles.background} />
+        <div className={styles.page}>
+            <Tabs value={path} onChange={(value) => router.replace(`/order${value}`)} className={styles.tabs}>
+                <Tabs.List>
+                    <Tabs.Tab value="/">Корзина</Tabs.Tab>
+                    <Tabs.Tab value="/history">История заказов</Tabs.Tab>
+                </Tabs.List>
+            </Tabs>
 
-            <div className={styles.page}>
-                <Tabs value={path} onChange={(value) => router.replace(`/order${value}`)} className={styles.tabs}>
-                    <Tabs.List>
-                        <Tabs.Tab value="/">Корзина</Tabs.Tab>
-                        <Tabs.Tab value="/history">История заказов</Tabs.Tab>
-                    </Tabs.List>
-                </Tabs>
-
-                {children}
-            </div>
-        </>
+            {children}
+        </div>
     );
 });
 
