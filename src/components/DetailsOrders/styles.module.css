@@ -1,0 +1,18 @@
+.conatiner {
+    background-color: #fff;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.text {
+    /* Paragraph 16 */
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    /* Text/Dark */
+    color: #000000;
+}
