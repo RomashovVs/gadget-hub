@@ -1,6 +1,8 @@
 import Image from 'next/image';
+
+import {Advantages, Contacts} from '@/components';
+
 import styles from './page.module.css';
-import {Advantages, Contacts, Footer, Header} from '@/components';
 
 export default function Home() {
     return (
@@ -15,6 +17,7 @@ export default function Home() {
                         height={0}
                         priority
                     />
+                    <></>
                     <Advantages />
                     <Contacts />
                 </main>

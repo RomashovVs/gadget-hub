@@ -1,9 +1,8 @@
 import {memo} from 'react';
-import Image from 'next/image';
-
-import styles from './styles.module.css';
 import {Flex} from '@mantine/core';
+
 import {AdvanatgesCard} from './AdvantagesCard';
+import styles from './styles.module.css';
 
 export const Advantages = memo(function Advantages() {
     return (

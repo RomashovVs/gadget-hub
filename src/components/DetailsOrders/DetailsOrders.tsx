@@ -1,5 +1,5 @@
-import {Table} from '@mantine/core';
 import {memo} from 'react';
+import {Table} from '@mantine/core';
 
 import styles from './styles.module.css';
 

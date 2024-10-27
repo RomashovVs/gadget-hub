@@ -1,6 +1,6 @@
 'use client';
 import {memo, ReactNode, useMemo} from 'react';
-import {useRouter, usePathname} from 'next/navigation';
+import {usePathname, useRouter} from 'next/navigation';
 import {Tabs} from '@mantine/core';
 
 import styles from './styles.module.css';

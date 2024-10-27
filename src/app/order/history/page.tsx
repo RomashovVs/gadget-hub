@@ -2,6 +2,7 @@
 import {memo} from 'react';
 
 import {DetailsOrders} from '@/components';
+
 import styles from './styles.module.css';
 
 const orders = {

@@ -1,10 +1,11 @@
 import type {Metadata} from 'next';
-import localFont from 'next/font/local';
+// import localFont from 'next/font/local';
+import {ColorSchemeScript, MantineProvider} from '@mantine/core';
+
+import {Footer, Header} from '@/components';
+
 import './globals.css';
 import '@mantine/core/styles.css';
-
-import {ColorSchemeScript, MantineProvider} from '@mantine/core';
-import {Footer, Header} from '@/components';
 
 export const metadata: Metadata = {
     title: 'Gadget Hub',

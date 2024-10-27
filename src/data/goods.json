@@ -1,0 +1,171 @@
+[
+    {
+        "id": 1,
+        "name": "Внешний аккумулятор 10000mAh, белый",
+        "img_src": "/images/white_power_bank.svg"
+    },
+    {
+        "id": 2,
+        "name": "Внешний аккумулятор 10000mAh, черный",
+        "img_src": "/images/black_power_bank.svg"
+    },
+    {
+        "id": 3,
+        "name": "Bluetooth гарнитура, черный",
+        "img_src": "/images/black_headphones.svg"
+    },
+    {
+        "id": 4,
+        "name": "Bluetooth гарнитура, серый",
+        "img_src": "/images/grey_headphones.svg"
+    },
+    {
+        "id": 5,
+        "name": "Беспроводная акустика",
+        "img_src": "/images/wireless_acoustics.svg"
+    },
+    {
+        "id": 6,
+        "name": "Смартфон 256 ГБ фиолетовый",
+        "img_src": "/images/smartphone_purple.svg",
+        "new_lable": true
+    },
+    {
+        "id": 7,
+        "name": "Смартфон 256 ГБ черный",
+        "img_src": "/images/smartphone_black.svg"
+    },
+    {
+        "id": 8,
+        "name": "Смартфон 256 ГБ белый",
+        "img_src": "/images/smartphone_white.svg",
+        "new_lable": true
+    },
+    {
+        "id": 9,
+        "name": "Часы с GPS трекером черные",
+        "img_src": "/images/gps_watch_black.svg",
+        "new_lable": true
+    },
+    {
+        "id": 10,
+        "name": "Часы с GPS трекером синие",
+        "img_src": "/images/gps_watch_blue.svg",
+        "new_lable": true
+    },
+    {
+        "id": 11,
+        "name": "Фитнес-браслет ASK-B19 зеленый",
+        "img_src": "/images/fitness_bracelet_green.svg"
+    },
+    {
+        "id": 12,
+        "name": "Фитнес-браслет ASK-B19 черный",
+        "img_src": "/images/fitness_bracelet_black.svg"
+    },
+    {
+        "id": 13,
+        "name": "Наушники белые",
+        "img_src": "/images/huawei_white.svg"
+    },
+    {
+        "id": 14,
+        "name": "Наушники синие",
+        "img_src": "/images/huawei_blue.svg"
+    },
+    {
+        "id": 15,
+        "name": "Наушники черные",
+        "img_src": "/images/huawei_black.svg"
+    },
+    {
+        "id": 16,
+        "name": "Видеокамера для блогера",
+        "img_src": "/images/videocamera.svg"
+    },
+    {
+        "id": 17,
+        "name": "Микрофон с разъемом Type-C",
+        "img_src": "/images/microphone.svg"
+    },
+    {
+        "id": 18,
+        "name": "Чехол-подвеска силиконовый с карабином, красный",
+        "img_src": "/images/silicone_red_case.svg"
+    },
+    {
+        "id": 19,
+        "name": "Чехол-подвеска силиконовый с карабином, белый",
+        "img_src": "/images/silicone_white_case.svg"
+    },
+    {
+        "id": 20,
+        "name": "Чехол-подвеска силиконовый с карабином, серый",
+        "img_src": "/images/silicone_grey_case.svg"
+    },
+    {
+        "id": 21,
+        "name": "Чехол-подвеска силиконовый с карабином, желтый",
+        "img_src": "/images/silicone_yellow_case.svg"
+    },
+    {
+        "id": 22,
+        "name": "Беспроводная акустика, серый",
+        "img_src": "/images/wireless_acoustics_grey.svg"
+    },
+    {
+        "id": 23,
+        "name": "Беспроводная акустика, голубой",
+        "img_src": "/images/wireless_acoustics_blue.svg",
+        "hit_label": true,
+        "new_lable": true
+    },
+    {
+        "id": 24,
+        "name": "Беспроводная акустика, бежевый",
+        "img_src": "/images/wireless_acoustics_beige.svg",
+        "hit_label": true
+    },
+    {
+        "id": 25,
+        "name": "Умная лампа",
+        "img_src": "/images/smart_lamp.svg"
+    },
+    {
+        "id": 26,
+        "name": "Аппаратный ключ аутентификации NFC",
+        "img_src": "/images/NFC_hardware_authentication_key.svg",
+        "hit_label": true
+    },
+    {
+        "id": 27,
+        "name": "Аппаратный криптокошелек",
+        "img_src": "/images/hardware_crypto_wallet.svg"
+    },
+    {
+        "id": 28,
+        "name": "Очки виртуальной реальности, смартфоны до 6,5",
+        "img_src": "/images/virtual_reality_glasses.svg"
+    },
+    {
+        "id": 29,
+        "name": "Шлем виртуальной реальности 128GB",
+        "img_src": "/images/virtual_reality_helmet.svg",
+        "hit_label": true
+    },
+    {
+        "id": 30,
+        "name": "Умный чемодан-скутер серый",
+        "img_src": "/images/smart_suitcase_scooter_grey.svg"
+    },
+    {
+        "id": 31,
+        "name": "Умный чемодан-скутер черный",
+        "img_src": "/images/smart_suitcase_scooter_black.svg"
+    },
+    {
+        "id": 32,
+        "name": "Дыхательный тренажер",
+        "img_src": "/images/breathing_simulator.svg"
+    }
+]

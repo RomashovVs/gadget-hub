@@ -1,8 +1,9 @@
 import {memo} from 'react';
+import {IconCategoryFilled, IconShoppingCartCog, IconUserFilled} from '@tabler/icons-react';
+
 import {Button} from '@/ui';
 
 import styles from './styles.module.css';
-import {IconCategoryFilled, IconShoppingCartCog, IconUserFilled} from '@tabler/icons-react';
 
 export const Header = memo(function Header() {
     return (

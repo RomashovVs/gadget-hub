@@ -1,10 +1,11 @@
 'use client';
-import {memo} from 'react';
+import {memo, useCallback} from 'react';
+import {PasswordInput, TextInput} from '@mantine/core';
+import {useForm} from '@mantine/form';
+
+import {Button} from '@/ui';
 
 import styles from './styles.module.css';
-import {Form, useForm} from '@mantine/form';
-import {PasswordInput, TextInput} from '@mantine/core';
-import {Button} from '@/ui';
 
 export const Login = memo(function Login() {
     const form = useForm({
@@ -15,11 +16,14 @@ export const Login = memo(function Login() {
         },
     });
 
+    // eslint-disable-next-line no-console
+    const loginSubmit = useCallback(() => console.log(form.values), [form.values]);
+
     return (
         <div className={styles.page}>
             <h1 className={styles.welcome}>Добро пожаловать!</h1>
             <div className={styles.formContainer}>
-                <form onSubmit={() => console.log(form.values)} className={styles.form}>
+                <form onSubmit={loginSubmit} className={styles.form}>
                     <TextInput
                         disabled
                         withAsterisk

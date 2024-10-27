@@ -1,9 +1,7 @@
 import {memo} from 'react';
-import {Button} from '@/ui';
+import Image from 'next/image';
 
 import styles from './styles.module.css';
-import {IconCategoryFilled, IconUserFilled} from '@tabler/icons-react';
-import Image from 'next/image';
 
 export const Footer = memo(function Footer() {
     return (
@@ -13,18 +11,12 @@ export const Footer = memo(function Footer() {
 
             <div className={styles.licence}>© 2024 ООО “Гаджет Хаб”. Все права защищены</div>
 
-            <Image src={'/phoneIcon.svg'} alt={'PhoneIcon'} width={32} height={32} className={styles.phoneIcon} />
+            <Image src="/phoneIcon.svg" alt="PhoneIcon" width={32} height={32} className={styles.phoneIcon} />
             <div className={styles.phone}>8 (800) 678-34-24</div>
 
-            <Image src={'/VK.svg'} alt={'VKLogo'} width={32} height={32} className={styles.vkLogo} />
-            <Image
-                src={'/TelegramLogo.svg'}
-                alt={'TelegramLogo'}
-                width={32}
-                height={32}
-                className={styles.telegramLogo}
-            />
-            <Image src={'/WhatsApp.svg'} alt={'WhatsApp'} width={32} height={32} className={styles.whatsAppLogo} />
+            <Image src="/VK.svg" alt="VKLogo" width={32} height={32} className={styles.vkLogo} />
+            <Image src="/TelegramLogo.svg" alt="TelegramLogo" width={32} height={32} className={styles.telegramLogo} />
+            <Image src="/WhatsApp.svg" alt="WhatsApp" width={32} height={32} className={styles.whatsAppLogo} />
         </footer>
     );
 });
