@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes, memo} from 'react';
+import {memo} from 'react';
 import classNames from 'classnames';
 import {Button as MantineButton, ButtonProps as MantineButtonProps} from '@mantine/core';
 
