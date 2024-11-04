@@ -1,0 +1,33 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    position: relative;
+
+    justify-items: center;
+    min-height: 65svh;
+    padding: 0 17.3%;
+}
+
+.title {
+    /* Header 32 */
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 130%;
+    /* identical to box height, or 42px */
+    display: flex;
+    align-items: center;
+
+    /* Text/Dark */
+    color: #000000;
+
+    margin-top: 2rem;
+}
+
+.tabs {
+    margin-top: 1rem;
+    width: fit-content;
+}

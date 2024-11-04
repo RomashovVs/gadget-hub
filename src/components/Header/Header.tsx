@@ -12,7 +12,7 @@ export const Header = memo(function Header() {
             <h2 className={styles.hub}>Hub</h2>
 
             <div className={styles.buttonSection}>
-                <a href="/">
+                <a href="/catalog">
                     <Button className={styles.button} leftSection={<IconCategoryFilled size={16} />}>
                         Каталог
                     </Button>

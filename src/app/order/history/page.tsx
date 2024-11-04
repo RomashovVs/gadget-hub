@@ -3,8 +3,6 @@ import {memo} from 'react';
 
 import {DetailsOrders} from '@/components';
 
-import styles from './styles.module.css';
-
 const orders = {
     details: [
         {number: '567800', at: '28.04.2024', countDevices: 1, totalCost: 6990},
