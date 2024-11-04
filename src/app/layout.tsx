@@ -6,6 +6,7 @@ import {Footer, Header} from '@/components';
 
 import './globals.css';
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 
 export const metadata: Metadata = {
     title: 'Gadget Hub',
