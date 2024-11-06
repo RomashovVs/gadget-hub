@@ -8,6 +8,8 @@ import './globals.css';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 
+import '../ui/theme';
+
 export const metadata: Metadata = {
     title: 'Gadget Hub',
     description: 'Project SPbPU',
@@ -25,7 +27,7 @@ export default function RootLayout({
             </head>
 
             <body>
-                <MantineProvider>
+                <MantineProvider classNamesPrefix="m">
                     <Header />
                     {children}
                     <Footer />

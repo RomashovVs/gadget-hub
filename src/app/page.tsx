@@ -5,7 +5,7 @@ import {Advantages, CarouselGoods, Contacts} from '@/components';
 
 import styles from './page.module.css';
 
-export const Home = memo(function Home() {
+const Home = memo(function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
@@ -58,3 +58,5 @@ export const Home = memo(function Home() {
         </div>
     );
 });
+
+export default Home;
