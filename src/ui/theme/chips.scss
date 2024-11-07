@@ -1,14 +1,10 @@
-.m-Chip-iconWrapper {
-    display: none;
-}
-
 .m-Chip-root {
     border-radius: 6px;
-}
 
-.m-Chip-root:hover {
-    background: #f3f6fa;
-    border-radius: 6px;
+    &:hover {
+        background: #f3f6fa;
+        border-radius: 6px;
+    }
 }
 
 .m-Chip-label {
@@ -28,47 +24,33 @@
     }
 }
 
-.m_fa109255:not([data-disabled]),
-.m_f7e165c3:not([data-disabled]) {
+.m-Chip-label:not([data-disabled]) {
     color: #115efb;
-}
 
-.m_fa109255:not([data-disabled]):where([data-checked]),
-.m_f7e165c3:not([data-disabled]):where([data-checked]) {
-    color: var(--chip-color);
-}
-
-:where([data-mantine-color-scheme='light']) .m_fa109255:not([data-disabled]),
-:where([data-mantine-color-scheme='light']) .m_f7e165c3:not([data-disabled]) {
     background: none;
-    border-radius: none;
-}
 
-// Not Chacked
-@media (hover: hover) {
-    :where([data-mantine-color-scheme='light']) .m_fa109255:not([data-disabled]):hover,
-    :where([data-mantine-color-scheme='light']) .m_f7e165c3:not([data-disabled]):hover {
+    &:hover {
         background: transparent;
     }
-}
 
-// Checked
-.m_fa109255:not([data-disabled]):where([data-checked]),
-.m_f7e165c3:not([data-disabled]):where([data-checked]) {
-    background: #84adff;
-    border-radius: 6px;
-    border-bottom-width: 0px;
+    &:where([data-checked]) {
+        color: var(--chip-color);
 
-    span {
-        border-bottom-width: 0px;
-    }
-}
-
-//Chcked
-@media (hover: hover) {
-    .m_fa109255:not([data-disabled]):where([data-checked]):hover,
-    .m_f7e165c3:not([data-disabled]):where([data-checked]):hover {
-        background: #84adff !important;
+        background: #84adff;
         border-radius: 6px;
+        border-bottom-width: 0px;
+
+        span {
+            border-bottom-width: 0px;
+        }
+
+        &:hover {
+            background: #84adff;
+            border-radius: 6px;
+        }
     }
+}
+
+.m-Chip-iconWrapper {
+    display: none;
 }
