@@ -1,7 +1,7 @@
 'use client';
 
-import {memo, useCallback, useState} from 'react';
-import {Chip, Flex, Group} from '@mantine/core';
+import {memo, useCallback, useMemo, useState} from 'react';
+import {Chip, Flex, Group, Pagination} from '@mantine/core';
 
 import {CatalogSidebar, GoodsList} from '@/components';
 import goods from '@/data/goods.json';
@@ -10,15 +10,19 @@ import {Sort} from '@/types/sort';
 import styles from './styles.module.css';
 
 const DEFAULT_SORT: Sort = 'new';
+const countPerPage = 6;
 
 const CatalogLayout = memo(function CatalogLayout() {
     const [sort, setSort] = useState<Sort>(DEFAULT_SORT);
+
+    const [page, setPage] = useState(1);
 
     const handleChangeSort = useCallback((value: string) => {
         setSort(value as Sort);
     }, []);
 
-    const pageGoods = goods.slice(0, 9);
+    const pageGoods = useMemo(() => goods.slice(0 + countPerPage * (page - 1), countPerPage * page), [page]);
+    const totalPages = useMemo(() => Math.ceil(goods.length / countPerPage), []);
 
     return (
         <div className={styles.page}>
@@ -38,6 +42,15 @@ const CatalogLayout = memo(function CatalogLayout() {
                 <GoodsList goods={pageGoods} />
                 <CatalogSidebar />
             </Flex>
+
+            <Pagination
+                total={totalPages}
+                value={page}
+                onChange={setPage}
+                mt="2rem"
+                mb="3rem"
+                className={styles.pagination}
+            />
         </div>
     );
 });

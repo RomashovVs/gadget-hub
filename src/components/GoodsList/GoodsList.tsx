@@ -13,5 +13,9 @@ interface Props {
 export const GoodsList = memo(function GoodsList(props: Props) {
     const {goods} = props;
 
-    return <Flex wrap="wrap">{goods?.map((good) => <ProductCard good={good} key={good.id} />)}</Flex>;
+    return (
+        <Flex wrap="wrap" w="80%">
+            {goods?.map((good) => <ProductCard good={good} key={good.id} />)}
+        </Flex>
+    );
 });
