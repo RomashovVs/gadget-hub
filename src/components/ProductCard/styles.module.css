@@ -3,6 +3,7 @@
     position: relative;
     flex-direction: column;
     max-width: 318px;
+    height: fit-content;
 
     gap: 0.5rem;
     padding: 1rem;
@@ -145,4 +146,21 @@
     height: 24px;
 
     margin-left: 0.25rem;
+}
+
+.button {
+    /* Color 1 */
+    background: #115efb;
+    border-radius: 8px;
+
+    /* Header 16 */
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    color: #ffffff;
+    width: 60%;
 }

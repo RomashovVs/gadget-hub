@@ -50,6 +50,8 @@ const CatalogLayout = memo(function CatalogLayout() {
                 mt="2rem"
                 mb="3rem"
                 className={styles.pagination}
+                siblings={1}
+                boundaries={1}
             />
         </div>
     );

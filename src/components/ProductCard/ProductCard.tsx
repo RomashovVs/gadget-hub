@@ -1,17 +1,19 @@
 import {memo} from 'react';
 import Image from 'next/image';
-import {IconStarFilled} from '@tabler/icons-react';
+import {IconShoppingCart, IconStarFilled} from '@tabler/icons-react';
 
 import {Good} from '@/types/goods';
+import {Button} from '@/ui';
 
 import styles from './styles.module.css';
 
 interface Props {
     good: Good;
+    showHandler?: unknown;
 }
 
 export const ProductCard = memo(function ProductCard(props: Props) {
-    const {good} = props;
+    const {good, showHandler} = props;
 
     return (
         <div className={styles.cardContainer}>
@@ -32,6 +34,14 @@ export const ProductCard = memo(function ProductCard(props: Props) {
                 <IconStarFilled size={20} className={styles.star} />
                 <span className={styles.ratingText}>{good.rating}</span>
             </div>
+
+            {showHandler ? (
+                <Button className={styles.button} leftSection={<IconShoppingCart size={16} />}>
+                    В корзину
+                </Button>
+            ) : null}
+
+            {/* {showHandler ? <GoodModal /> : null} */}
         </div>
     );
 });
