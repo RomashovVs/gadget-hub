@@ -3,7 +3,7 @@
 import {memo, useCallback, useState} from 'react';
 import {Chip, Flex, Group} from '@mantine/core';
 
-import {GoodsList} from '@/components';
+import {CatalogSidebar, GoodsList} from '@/components';
 import goods from '@/data/goods.json';
 import {Sort} from '@/types/sort';
 
@@ -12,10 +12,10 @@ import styles from './styles.module.css';
 const DEFAULT_SORT: Sort = 'new';
 
 const CatalogLayout = memo(function CatalogLayout() {
-    const [sort, onSort] = useState<Sort>(DEFAULT_SORT);
+    const [sort, setSort] = useState<Sort>(DEFAULT_SORT);
 
     const handleChangeSort = useCallback((value: string) => {
-        onSort(value as Sort);
+        setSort(value as Sort);
     }, []);
 
     const pageGoods = goods.slice(0, 9);
@@ -36,7 +36,7 @@ const CatalogLayout = memo(function CatalogLayout() {
 
             <Flex direction="row">
                 <GoodsList goods={pageGoods} />
-                {/* <CatalogSidebar /> */}
+                <CatalogSidebar />
             </Flex>
         </div>
     );

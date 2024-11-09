@@ -1,5 +1,6 @@
 export * from './Advantages';
 export * from './CarouselGoods';
+export * from './CatalogSidebar';
 export * from './Contacts';
 export * from './DetailsOrders';
 export * from './EmptyOrder';

@@ -1,0 +1,23 @@
+.title {
+    /* Header 20 */
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+    /* identical to box height, or 28px */
+
+    /* Text/Dark */
+    color: #000000;
+
+    margin-bottom: 1rem;
+}
+
+.button {
+    width: max-content;
+}
+
+.checkboxes {
+    margin-top: 1rem;
+    width: fit-content;
+}
