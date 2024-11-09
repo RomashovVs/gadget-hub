@@ -14,7 +14,7 @@ export const EmptyOrder = memo(function EmptyOrder() {
             <h1>Пока пусто</h1>
             <div>Ознакомьтесь с новинками и хитами на главной или найдите нужное в каталоге</div>
             <Flex direction="row" gap="lg" align="center">
-                <a href="/">
+                <a href="/catalog">
                     <Button className={styles.button}>Перейти в каталог</Button>
                 </a>
                 <Link href="/" className={styles.link}>
