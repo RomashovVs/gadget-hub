@@ -2,10 +2,12 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    width: max-content;
+    max-width: 318px;
 
     gap: 0.5rem;
     padding: 1rem;
+
+    overflow: hidden;
 }
 
 .cardContainer:hover {
@@ -95,6 +97,10 @@
     color: #000000;
 }
 
+.title {
+    overflow: hidden;
+}
+
 .name {
     font-family: 'Rubik';
     font-style: normal;
@@ -103,6 +109,10 @@
     line-height: 150%;
 
     color: #484848;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .cardContainer:hover .name {

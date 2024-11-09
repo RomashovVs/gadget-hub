@@ -24,7 +24,9 @@ export const ProductCard = memo(function ProductCard(props: Props) {
                 <Image src={good.img_src} alt={good.name} width={100} height={100} className={styles.goodImage} />
             </div>
             <div className={styles.price}>{good.price} ₽</div>
-            <div className={styles.name}>{good.name}</div>
+            <div className={styles.title}>
+                <div className={styles.name}>{good.name}</div>
+            </div>
 
             <div className={styles.rating}>
                 <IconStarFilled size={20} className={styles.star} />

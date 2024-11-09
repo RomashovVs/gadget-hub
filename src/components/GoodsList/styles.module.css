@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.descriptionSection {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.title {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 150%;
+    /* identical to box height, or 48px */
+    display: flex;
+    align-items: center;
+
+    /* Text/Dark */
+    color: #000000;
+
+    margin-bottom: 1rem;
+}
+
+.description {
+    width: 14rem;
+
+    /* Paragraph 16 */
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* or 24px */
+
+    /* Text/Light */
+    color: #7b7b7b;
+}
+
+.carousel {
+    display: flex;
+    width: 100%;
+}
+
+.control {
+    box-shadow: none;
+}

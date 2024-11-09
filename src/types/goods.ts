@@ -4,7 +4,6 @@ export interface Good {
     price: string;
     rating: string;
     img_src: string;
-    labels: string[];
     new_label?: boolean;
     hit_label?: boolean;
 }

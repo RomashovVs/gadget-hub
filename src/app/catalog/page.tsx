@@ -1,27 +1,24 @@
 'use client';
 
-import {memo, ReactNode, useCallback, useState} from 'react';
-import {Chip, Group} from '@mantine/core';
+import {memo, useCallback, useState} from 'react';
+import {Chip, Flex, Group} from '@mantine/core';
 
+import {GoodsList} from '@/components';
+import goods from '@/data/goods.json';
 import {Sort} from '@/types/sort';
 
 import styles from './styles.module.css';
 
 const DEFAULT_SORT: Sort = 'new';
 
-interface Props {
-    children: ReactNode;
-}
-
-const CatalogLayout = memo(function CatalogLayout(props: Props) {
-    const {children} = props;
+const CatalogLayout = memo(function CatalogLayout() {
     const [sort, onSort] = useState<Sort>(DEFAULT_SORT);
 
     const handleChangeSort = useCallback((value: string) => {
-        // eslint-disable-next-line no-console
-        console.log(value);
         onSort(value as Sort);
     }, []);
+
+    const pageGoods = goods.slice(0, 9);
 
     return (
         <div className={styles.page}>
@@ -37,8 +34,10 @@ const CatalogLayout = memo(function CatalogLayout(props: Props) {
                 </Group>
             </Chip.Group>
 
-            {children}
-            {/* <CatalogSidebar /> */}
+            <Flex direction="row">
+                <GoodsList goods={pageGoods} />
+                {/* <CatalogSidebar /> */}
+            </Flex>
         </div>
     );
 });
