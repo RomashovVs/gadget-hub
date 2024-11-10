@@ -1,0 +1,15 @@
+.content {
+    border-radius: 40px;
+}
+
+.header {
+    padding-right: 2rem;
+}
+
+.close {
+    color: #aebddb;
+}
+
+.body {
+    padding: 2.875rem 8.625rem 6.625rem;
+}

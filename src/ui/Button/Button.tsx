@@ -10,7 +10,7 @@ interface Props extends Omit<MantineButtonProps, 'onClick'> {
 }
 
 export const Button = memo(function Button(props: Props) {
-    const {className, ...other} = props;
+    const {className, onClick, ...other} = props;
 
-    return <MantineButton className={classNames(styles.button, className)} {...other} />;
+    return <MantineButton className={classNames(styles.button, className)} onClick={onClick} {...other} />;
 });

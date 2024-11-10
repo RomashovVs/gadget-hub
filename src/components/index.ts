@@ -5,6 +5,7 @@ export * from './Contacts';
 export * from './DetailsOrders';
 export * from './EmptyOrder';
 export * from './Footer';
+export * from './GoodModal';
 export * from './GoodsList';
 export * from './Header';
 export * from './Login';
