@@ -1,12 +1,13 @@
+// eslint-disable-next-line simple-import-sort/imports
 import type {Metadata} from 'next';
-// import localFont from 'next/font/local';
-import {ColorSchemeScript, MantineProvider} from '@mantine/core';
 
-import {Footer, Header} from '@/components';
-
+// !!Important
 import './globals.css';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
+import {ColorSchemeScript, MantineProvider} from '@mantine/core';
+
+import {Footer, Header} from '@/components';
 
 import '../ui/theme';
 

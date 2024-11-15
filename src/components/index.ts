@@ -9,4 +9,5 @@ export * from './GoodModal';
 export * from './GoodsList';
 export * from './Header';
 export * from './Login';
+export * from './Order';
 export * from './ProductCard';

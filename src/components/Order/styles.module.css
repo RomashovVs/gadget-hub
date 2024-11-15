@@ -1,0 +1,127 @@
+.conatiner {
+    background-color: #fff;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.allCheckbox {
+    margin-left: 0.625rem;
+}
+
+.allCheckbox :global(.m-Checkbox-description) {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #000000;
+
+    margin-top: 0;
+}
+
+.allCheckbox :global(.m-Checkbox-inner) {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #000000;
+}
+
+.imageContainer {
+    width: 148px;
+    height: 148px;
+
+    background: #f3f6fa;
+    border-radius: 12px;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.tr {
+    vertical-align: top;
+}
+
+.tableCheckbox {
+    vertical-align: middle;
+}
+
+.control,
+.control:hover {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+
+    border-radius: 4px;
+}
+
+.control:hover {
+    color: #ffffff;
+    background: #115efb;
+}
+
+.control,
+.control:where([data-disabled]:not([data-loading])):hover {
+    color: #115efb;
+    background: #e4e7eb;
+}
+
+.count {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.price {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.deletButton {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+
+    display: flex;
+    align-items: center;
+
+    color: #ff60c3;
+}
+
+.deletButton:hover {
+    color: #cd3c96;
+    border-radius: 8px;
+
+    background: #f3f6fa;
+}
+
+.name {
+    max-width: 24rem;
+}

@@ -39,7 +39,7 @@
     /* identical to box height, or 42px */
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
 
     /* Text/Dark */
     color: #000000;
