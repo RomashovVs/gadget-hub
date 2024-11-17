@@ -17,6 +17,22 @@ export const Order = memo(function Order() {
         defaultValue: [goods[0], goods[1]],
     });
 
+    const count = order?.reduce((prevCount, good) => {
+        if (good.select) {
+            return prevCount + 1;
+        }
+
+        return prevCount;
+    }, 0);
+
+    const totalPrice = order?.reduce((prevCount, good) => {
+        if (good.select) {
+            return prevCount + Number(good.price ?? 0);
+        }
+
+        return prevCount;
+    }, 0);
+
     const [values, handlers] = useListState(order.map((good) => good.select));
 
     const allChecked = values.every(Boolean);
@@ -46,7 +62,7 @@ export const Order = memo(function Order() {
                         />
                     ))}
 
-                    <SummaryOrder />
+                    <SummaryOrder count={count} totalPrice={totalPrice} />
                 </Table.Tbody>
             </Table>
         </div>
