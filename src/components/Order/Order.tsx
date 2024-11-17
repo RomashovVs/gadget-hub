@@ -8,10 +8,11 @@ import goods from '@/data/goods.json';
 import {Good} from '@/types/goods';
 
 import {OrderRow} from './OrderRow';
+import {SummaryOrder} from './SummaryOrder';
 import styles from './styles.module.css';
 
 export const Order = memo(function Order() {
-    const [order] = useLocalStorage<(Good & {select?: boolean})[]>({
+    const [order, setOrder] = useLocalStorage<(Good & {select?: boolean})[]>({
         key: 'order',
         defaultValue: [goods[0], goods[1]],
     });
@@ -19,10 +20,11 @@ export const Order = memo(function Order() {
     const [values, handlers] = useListState(order.map((good) => good.select));
 
     const allChecked = values.every(Boolean);
-    const allCheckHandlers = useCallback(
-        () => handlers.setState((current) => current.map(() => !allChecked)),
-        [allChecked, handlers],
-    );
+    const allCheckHandlers = useCallback(() => {
+        handlers.setState((current) => current.map(() => !allChecked));
+
+        setOrder((prevOrder) => prevOrder.map((good) => ({...good, select: !allChecked})));
+    }, [allChecked, handlers, setOrder]);
 
     return (
         <div className={styles.conatiner}>
@@ -43,6 +45,8 @@ export const Order = memo(function Order() {
                             onChangeChecked={(event) => handlers.setItem(index, event.currentTarget.checked)}
                         />
                     ))}
+
+                    <SummaryOrder />
                 </Table.Tbody>
             </Table>
         </div>

@@ -10,4 +10,5 @@ export * from './GoodsList';
 export * from './Header';
 export * from './Login';
 export * from './Order';
+export * from './OrderForm';
 export * from './ProductCard';
