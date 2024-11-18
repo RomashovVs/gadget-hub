@@ -1,0 +1,62 @@
+.content {
+    border-radius: 40px;
+}
+
+.header {
+    padding-right: 2rem;
+    min-height: 0;
+}
+
+.close {
+    color: #aebddb;
+}
+
+.body {
+    padding: 0 2rem 2rem 3rem;
+}
+
+.description {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+
+    color: #000000;
+}
+
+.button {
+    background: #115efb;
+    border-radius: 8px;
+
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+
+    color: #ffffff;
+    width: fit-content;
+}
+
+.deletButton {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+
+    margin-right: 0.5rem;
+
+    display: flex;
+    align-items: center;
+
+    color: #ff60c3;
+}
+
+.deletButton:hover {
+    color: #cd3c96;
+    border-radius: 8px;
+
+    background: #f3f6fa;
+}

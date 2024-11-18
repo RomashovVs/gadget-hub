@@ -20,7 +20,7 @@ export const ProductCard = memo(function ProductCard(props: Props) {
 
     const handleOpenModal = useCallback(() => (showHandler ? open() : null), [open, showHandler]);
 
-    // Перенести в другой компонент <ByuButtons goodId={good.id}/>
+    // Перенести в другой компонент <BuyButtons goodId={good.id}/>
     const handleBuy = useCallback((event: MouseEvent) => {
         // eslint-disable-next-line no-console
         console.log('покупаем');
