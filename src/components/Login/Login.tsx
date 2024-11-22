@@ -1,8 +1,9 @@
 'use client';
-import {memo, useCallback} from 'react';
+import {FormEvent, memo, useCallback} from 'react';
 import {PasswordInput, TextInput} from '@mantine/core';
 import {useForm} from '@mantine/form';
 
+import {addUser} from '@/lib/api/user';
 import {Button} from '@/ui';
 
 import styles from './styles.module.css';
@@ -10,6 +11,7 @@ import styles from './styles.module.css';
 export const Login = memo(function Login() {
     const form = useForm({
         mode: 'uncontrolled',
+        clearInputErrorOnChange: false,
         initialValues: {
             login: '',
             password: '',
@@ -17,7 +19,16 @@ export const Login = memo(function Login() {
     });
 
     // eslint-disable-next-line no-console
-    const loginSubmit = useCallback(() => console.log(form.values), [form.values]);
+    const loginSubmit = useCallback(
+        (e: FormEvent) => {
+            void (async () => {
+                await addUser(form.getValues());
+            })();
+
+            e.preventDefault();
+        },
+        [form],
+    );
 
     return (
         <div className={styles.page}>
@@ -25,15 +36,15 @@ export const Login = memo(function Login() {
             <div className={styles.formContainer}>
                 <form onSubmit={loginSubmit} className={styles.form}>
                     <TextInput
-                        disabled
+                        // disabled
                         withAsterisk
                         label="Логин"
-                        key={form.key('email')}
-                        {...form.getInputProps('email')}
+                        key={form.key('login')}
+                        {...form.getInputProps('login')}
                     />
 
                     <PasswordInput
-                        disabled
+                        // disabled
                         withAsterisk
                         label="Пароль"
                         key={form.key('password')}
