@@ -1,12 +1,19 @@
 'use client';
-import {FormEvent, memo, useCallback} from 'react';
-import {PasswordInput, TextInput} from '@mantine/core';
+import {FormEvent, memo, useCallback, useEffect, useState} from 'react';
+import {useRouter} from 'next/navigation';
+import {Alert, PasswordInput, TextInput} from '@mantine/core';
 import {useForm} from '@mantine/form';
+import {useLocalStorage} from '@mantine/hooks';
 
-import {addUser} from '@/lib/api/user';
+import {authenticationUser} from '@/lib/api/user';
 import {Button} from '@/ui';
 
 import styles from './styles.module.css';
+
+// TODO
+// Исправить компонент, разобраться с useEffect. В теории его быть тут не должно,
+// мы должны в localStorage записывать в каком-то хуке - useAuthenticate(),
+// в котором и про ошибку аутентификации будем знать и про успешность выполнения.
 
 export const Login = memo(function Login() {
     const form = useForm({
@@ -17,34 +24,51 @@ export const Login = memo(function Login() {
             password: '',
         },
     });
+    const [_, setLocalAuth] = useLocalStorage({key: 'auth', defaultValue: false});
 
-    // eslint-disable-next-line no-console
+    const [errorAuth, setErrorAuth] = useState('');
+    const [auth, setAuth] = useState<boolean | undefined>(undefined);
+
+    const router = useRouter();
+
     const loginSubmit = useCallback(
         (e: FormEvent) => {
             void (async () => {
-                await addUser(form.getValues());
+                const isAuthUser = await authenticationUser(form.getValues());
+                setAuth(isAuthUser);
             })();
 
             e.preventDefault();
         },
-        [form],
+        [form, setAuth],
     );
+
+    useEffect(() => {
+        if (auth) {
+            setErrorAuth('');
+            setLocalAuth(true);
+            router.push('/');
+
+            return;
+        }
+
+        if (auth === false) {
+            setErrorAuth('Ошибка аутентификации');
+
+            return;
+        }
+
+        setErrorAuth('');
+    }, [auth, router, setLocalAuth]);
 
     return (
         <div className={styles.page}>
             <h1 className={styles.welcome}>Добро пожаловать!</h1>
             <div className={styles.formContainer}>
                 <form onSubmit={loginSubmit} className={styles.form}>
-                    <TextInput
-                        // disabled
-                        withAsterisk
-                        label="Логин"
-                        key={form.key('login')}
-                        {...form.getInputProps('login')}
-                    />
+                    <TextInput withAsterisk label="Логин" key={form.key('login')} {...form.getInputProps('login')} />
 
                     <PasswordInput
-                        // disabled
                         withAsterisk
                         label="Пароль"
                         key={form.key('password')}
@@ -54,6 +78,8 @@ export const Login = memo(function Login() {
                     <Button type="submit" className={styles.button}>
                         Войти
                     </Button>
+
+                    {errorAuth ? <Alert color="red">{errorAuth}</Alert> : null}
                 </form>
             </div>
         </div>

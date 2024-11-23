@@ -1,6 +1,6 @@
 db = db.getSiblingDB('gadget_hub');
 
-db.user.insert({login: 'test', password: "123456789"})
+db.users.insert({login: 'test', password: "123456789"})
 
 db.goods.insertMany([
     {
