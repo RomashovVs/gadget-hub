@@ -7,7 +7,7 @@ import {ProductCard} from '../ProductCard';
 // import styles from './styles.module.css';
 
 interface Props {
-    goods: Good[] | undefined;
+    goods: Good[] | null | undefined;
 }
 
 export const GoodsList = memo(function GoodsList(props: Props) {

@@ -3,7 +3,7 @@ import {FormEvent, memo, useCallback, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {Alert, PasswordInput, TextInput} from '@mantine/core';
 import {useForm} from '@mantine/form';
-import {useLocalStorage} from '@mantine/hooks';
+import {useSessionStorage} from '@mantine/hooks';
 
 import {authenticationUser} from '@/lib/api/user';
 import {Button} from '@/ui';
@@ -24,7 +24,7 @@ export const Login = memo(function Login() {
             password: '',
         },
     });
-    const [_, setLocalAuth] = useLocalStorage({key: 'auth', defaultValue: false});
+    const [_, setSessionAuth] = useSessionStorage({key: 'auth', defaultValue: false});
 
     const [errorAuth, setErrorAuth] = useState('');
     const [auth, setAuth] = useState<boolean | undefined>(undefined);
@@ -46,7 +46,7 @@ export const Login = memo(function Login() {
     useEffect(() => {
         if (auth) {
             setErrorAuth('');
-            setLocalAuth(true);
+            setSessionAuth(true);
             router.push('/');
 
             return;
@@ -59,7 +59,7 @@ export const Login = memo(function Login() {
         }
 
         setErrorAuth('');
-    }, [auth, router, setLocalAuth]);
+    }, [auth, router, setSessionAuth]);
 
     return (
         <div className={styles.page}>

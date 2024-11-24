@@ -2,9 +2,10 @@
 
 import {memo, useCallback, useMemo, useState} from 'react';
 import {Chip, Flex, Group, Pagination} from '@mantine/core';
+import {useQuery} from '@tanstack/react-query';
 
 import {CatalogSidebar, GoodsList} from '@/components';
-import goods from '@/data/goods.json';
+import {getGood} from '@/lib/api/goods';
 import {Sort} from '@/types/sort';
 
 import styles from './styles.module.css';
@@ -13,6 +14,10 @@ const DEFAULT_SORT: Sort = 'new';
 const countPerPage = 6;
 
 const CatalogLayout = memo(function CatalogLayout() {
+    const {data: goods} = useQuery({
+        queryKey: ['goods'],
+        queryFn: () => getGood(),
+    });
     const [sort, setSort] = useState<Sort>(DEFAULT_SORT);
 
     const [page, setPage] = useState(1);
@@ -21,8 +26,8 @@ const CatalogLayout = memo(function CatalogLayout() {
         setSort(value as Sort);
     }, []);
 
-    const pageGoods = useMemo(() => goods.slice(0 + countPerPage * (page - 1), countPerPage * page), [page]);
-    const totalPages = useMemo(() => Math.ceil(goods.length / countPerPage), []);
+    const pageGoods = useMemo(() => goods?.slice(0 + countPerPage * (page - 1), countPerPage * page), [goods, page]);
+    const totalPages = useMemo(() => Math.ceil((goods?.length ?? 1) / countPerPage), [goods?.length]);
 
     return (
         <div className={styles.page}>

@@ -22,7 +22,6 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
     }, []);
 
     const hendlerReset = useCallback(() => {
-        // eslint-disable-next-line no-console
         setTypes([]);
         setColors([]);
         setRangeValue([100, 900]);

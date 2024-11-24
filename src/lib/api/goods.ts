@@ -1,9 +1,29 @@
-// import {NextApiRequest, NextApiResponse} from 'next';
+'use server';
 
-// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//     const {db} = await connectToDatabase();
+import {Good} from '@/models';
+import {Good as TGood} from '@/types/goods';
 
-//     const blogs = await db.collection('blogs').find().toArray();
+export const getGood = async (): Promise<TGood[] | null | undefined> => {
+    try {
+        const goods = await Good.find(
+            {},
+            {
+                _id: 0,
+                id: 1,
+                name: 1,
+                img_src: 1,
+                hit_label: 1,
+                new_label: 1,
+                price: 1,
+                rating: 1,
+            },
+        )
+            .lean()
+            .exec();
 
-//     res.status(200).json({blogs});
-// }
+        return goods;
+    } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+    }
+};

@@ -1,8 +1,10 @@
 import {memo} from 'react';
-import {IconCategoryFilled, IconShoppingCartCog, IconUserFilled} from '@tabler/icons-react';
+import {IconCategoryFilled, IconShoppingCartCog} from '@tabler/icons-react';
 
 import {Button} from '@/ui';
 
+import {AuthGuard} from '../AuthGuard';
+import {LoginButton} from './LoginButton';
 import styles from './styles.module.css';
 
 export const Header = memo(function Header() {
@@ -12,23 +14,23 @@ export const Header = memo(function Header() {
             <h2 className={styles.hub}>Hub</h2>
 
             <div className={styles.buttonSection}>
-                <a href="/catalog">
-                    <Button className={styles.button} leftSection={<IconCategoryFilled size={16} />}>
-                        Каталог
-                    </Button>
-                </a>
+                <AuthGuard>
+                    <a href="/catalog">
+                        <Button className={styles.button} leftSection={<IconCategoryFilled size={16} />}>
+                            Каталог
+                        </Button>
+                    </a>
+                </AuthGuard>
 
-                <a href="/order">
-                    <Button leftSection={<IconShoppingCartCog size={16} />} className={styles.button}>
-                        Корзина
-                    </Button>
-                </a>
+                <AuthGuard>
+                    <a href="/order">
+                        <Button leftSection={<IconShoppingCartCog size={16} />} className={styles.button}>
+                            Корзина
+                        </Button>
+                    </a>
+                </AuthGuard>
 
-                <a href="/login">
-                    <Button leftSection={<IconUserFilled size={16} />} className={styles.button}>
-                        Войти
-                    </Button>
-                </a>
+                <LoginButton />
             </div>
         </div>
     );

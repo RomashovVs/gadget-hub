@@ -10,6 +10,7 @@ import {ColorSchemeScript, MantineProvider} from '@mantine/core';
 import {Footer, Header} from '@/components';
 
 import '../ui/theme';
+import {Provider} from './Provider';
 
 export const metadata: Metadata = {
     title: 'Gadget Hub',
@@ -28,11 +29,13 @@ export default function RootLayout({
             </head>
 
             <body>
-                <MantineProvider classNamesPrefix="m">
-                    <Header />
-                    {children}
-                    <Footer />
-                </MantineProvider>
+                <Provider>
+                    <MantineProvider classNamesPrefix="m">
+                        <Header />
+                        {children}
+                        <Footer />
+                    </MantineProvider>
+                </Provider>
             </body>
         </html>
     );
