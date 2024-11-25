@@ -1,11 +1,23 @@
-import {memo} from 'react';
+'use client';
+
+import {memo, useMemo} from 'react';
 import Image from 'next/image';
+import {useQuery} from '@tanstack/react-query';
 
 import {Advantages, CarouselGoods, Contacts} from '@/components';
+import {getGood} from '@/lib/api/goods';
 
 import styles from './page.module.css';
 
 const Home = memo(function Home() {
+    const {data: goods} = useQuery({
+        queryKey: ['goods'],
+        queryFn: () => getGood(),
+    });
+
+    const hitGoods = useMemo(() => goods?.filter((good) => good.hit_label), [goods]);
+    const newsGoods = useMemo(() => goods?.filter((good) => good.new_label), [goods]);
+
     return (
         <div className={styles.page}>
             <main className={styles.main}>
@@ -16,16 +28,7 @@ const Home = memo(function Home() {
                     icon={
                         <Image src="/Subtract.svg" alt="Subtract" width={32} height={32} className={styles.subtract} />
                     }
-                    goods={[
-                        {
-                            id: '8',
-                            name: 'Смартфон 256 ГБ белый',
-                            img_src: '/images/smartphone_white.svg',
-                            hit_label: true,
-                            price: '1000',
-                            rating: '4.8',
-                        },
-                    ]}
+                    goods={hitGoods}
                 />
                 <CarouselGoods
                     title="Новинки"
@@ -39,16 +42,7 @@ const Home = memo(function Home() {
                             className={styles.stars}
                         />
                     }
-                    goods={[
-                        {
-                            id: '8',
-                            name: 'Смартфон 256 ГБ белый',
-                            img_src: '/images/smartphone_white.svg',
-                            new_label: true,
-                            price: '1000',
-                            rating: '5.0',
-                        },
-                    ]}
+                    goods={newsGoods}
                 />
                 <Advantages />
                 <Contacts />

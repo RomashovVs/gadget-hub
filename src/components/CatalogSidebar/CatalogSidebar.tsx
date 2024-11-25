@@ -1,6 +1,6 @@
 'use client';
 
-import {memo, useCallback, useState} from 'react';
+import {FormEvent, KeyboardEvent, memo, useCallback, useState} from 'react';
 import {Checkbox, CheckboxGroup, Flex, Input, RangeSlider} from '@mantine/core';
 
 import {Button} from '@/ui';
@@ -9,14 +9,59 @@ import styles from './styles.module.css';
 
 export const CatalogSidebar = memo(function CatalogSidebar() {
     const [rangeValue, setRangeValue] = useState<[number, number]>([100, 900]);
+    const [inputValues, setInputValues] = useState<[number, number]>([100, 900]);
+
     const [types, setTypes] = useState<string[]>([]);
     const [colors, setColors] = useState<string[]>([]);
 
-    const handlerRangeSliderChange = useCallback((value: [number, number]) => {
+    const handleRangeSliderChange = useCallback((value: [number, number]) => {
         setRangeValue(value);
+        setInputValues(value);
     }, []);
 
-    const hendlerSubmit = useCallback(() => {
+    const handleRightInputValueChange = useCallback((e: FormEvent<HTMLInputElement>) => {
+        const newValue = Number(e.currentTarget.value);
+
+        setInputValues((prev) => {
+            return [prev[0], newValue];
+        });
+    }, []);
+    const handleLeftInputValueChange = useCallback((e: FormEvent<HTMLInputElement>) => {
+        const newValue = Number(e.currentTarget.value);
+
+        if (Number.isNaN(newValue)) {
+            return;
+        }
+
+        setInputValues((prev) => {
+            return [newValue, prev[1]];
+        });
+    }, []);
+
+    const handleRightSliderChange = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key !== 'Enter') {
+            return;
+        }
+
+        const newValue = Number(e.currentTarget.value);
+
+        setRangeValue((prev) => {
+            return [prev[0], newValue];
+        });
+    }, []);
+    const handleLeftSliderChange = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key !== 'Enter') {
+            return;
+        }
+
+        const newValue = Number(e.currentTarget.value);
+
+        setRangeValue((prev) => {
+            return [newValue, prev[1]];
+        });
+    }, []);
+
+    const handleSubmit = useCallback(() => {
         // eslint-disable-next-line no-console
         console.log('values');
     }, []);
@@ -33,12 +78,20 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
             <Flex direction="row" gap="lg" mb="1rem">
                 <div>
                     <div>От</div>
-                    <Input defaultValue={rangeValue[0]} />
+                    <Input
+                        value={inputValues[0]}
+                        onKeyDown={handleLeftSliderChange}
+                        onChange={handleLeftInputValueChange}
+                    />
                 </div>
 
                 <div>
                     <div>До</div>
-                    <Input defaultValue={rangeValue[1]} />
+                    <Input
+                        value={inputValues[1]}
+                        onKeyDown={handleRightSliderChange}
+                        onChange={handleRightInputValueChange}
+                    />
                 </div>
             </Flex>
             <RangeSlider
@@ -47,7 +100,7 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
                 min={0}
                 max={1000}
                 step={1}
-                onChange={handlerRangeSliderChange}
+                onChange={handleRangeSliderChange}
                 label={null}
                 mb="1rem"
             />
@@ -75,7 +128,7 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
             </CheckboxGroup>
 
             <Flex direction="row">
-                <Button className={styles.button} onClick={hendlerSubmit}>
+                <Button className={styles.button} onClick={handleSubmit}>
                     Показать
                 </Button>
 

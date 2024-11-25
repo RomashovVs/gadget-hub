@@ -28,21 +28,21 @@ db.goods.insertMany([
         "id": "4",
         "name": "Bluetooth гарнитура, серый",
         "img_src": "/images/grey_headphones.svg",
-        "price": "1000",
+        "price": "1",
         "rating": "5.0"
     },
     {
         "id": "5",
         "name": "Беспроводная акустика",
         "img_src": "/images/wireless_acoustics.svg",
-        "price": "1000",
+        "price": "10",
         "rating": "5.0"
     },
     {
         "id": "6",
         "name": "Смартфон 256 ГБ фиолетовый",
         "img_src": "/images/smartphone_purple.svg",
-        "new_lable": true,
+        "new_label": true,
         "price": "1000",
         "rating": "5.0"
     },
@@ -57,7 +57,7 @@ db.goods.insertMany([
         "id": "8",
         "name": "Смартфон 256 ГБ белый",
         "img_src": "/images/smartphone_white.svg",
-        "new_lable": true,
+        "new_label": true,
         "price": "1000",
         "rating": "5.0"
     },
@@ -65,7 +65,7 @@ db.goods.insertMany([
         "id": "9",
         "name": "Часы с GPS трекером черные",
         "img_src": "/images/gps_watch_black.svg",
-        "new_lable": true,
+        "new_label": true,
         "price": "1000",
         "rating": "5.0"
     },
@@ -73,7 +73,7 @@ db.goods.insertMany([
         "id": "10",
         "name": "Часы с GPS трекером синие",
         "img_src": "/images/gps_watch_blue.svg",
-        "new_lable": true,
+        "new_label": true,
         "price": "1000",
         "rating": "5.0"
     },
@@ -109,7 +109,7 @@ db.goods.insertMany([
         "id": "15",
         "name": "Наушники черные",
         "img_src": "/images/huawei_black.svg",
-        "price": "1000",
+        "price": "50",
         "rating": "5.0"
     },
     {
@@ -166,7 +166,7 @@ db.goods.insertMany([
         "name": "Беспроводная акустика, голубой",
         "img_src": "/images/wireless_acoustics_blue.svg",
         "hit_label": true,
-        "new_lable": true,
+        "new_label": true,
         "price": "1000",
         "rating": "5.0"
     },

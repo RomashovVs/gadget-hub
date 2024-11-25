@@ -13,7 +13,7 @@ interface Props {
     title: string;
     description: string;
     icon: ReactNode;
-    goods: Good[];
+    goods: Good[] | undefined;
 }
 
 export const CarouselGoods = memo(function CarouselGoods(props: Props) {
@@ -29,7 +29,6 @@ export const CarouselGoods = memo(function CarouselGoods(props: Props) {
 
             <Carousel
                 align="start"
-                loop
                 height="max-content"
                 draggable
                 dragFree
@@ -47,18 +46,11 @@ export const CarouselGoods = memo(function CarouselGoods(props: Props) {
                 slideSize="33.3%"
                 controlsOffset="-1.5rem"
             >
-                <Carousel.Slide>
-                    <ProductCard good={goods[0]} />
-                </Carousel.Slide>
-                <Carousel.Slide>
-                    <ProductCard good={goods[0]} />
-                </Carousel.Slide>
-                <Carousel.Slide>
-                    <ProductCard good={goods[0]} />
-                </Carousel.Slide>
-                <Carousel.Slide>
-                    <ProductCard good={goods[0]} />
-                </Carousel.Slide>
+                {goods?.map((good) => (
+                    <Carousel.Slide key={good.id}>
+                        <ProductCard good={good} />
+                    </Carousel.Slide>
+                ))}
             </Carousel>
         </div>
     );
