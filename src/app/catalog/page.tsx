@@ -5,8 +5,9 @@ import {Chip, Flex, Group, Pagination} from '@mantine/core';
 import {useQuery} from '@tanstack/react-query';
 
 import {CatalogSidebar, GoodsList} from '@/components';
-import {useSortGoods} from '@/hooks/useSortGoods';
+import {useFilterGoods, useSortGoods} from '@/hooks';
 import {getGood} from '@/lib/api/goods';
+import {CatalogFilters} from '@/types/filters';
 import {Sort} from '@/types/sort';
 
 import styles from './styles.module.css';
@@ -23,15 +24,17 @@ const CatalogLayout = memo(function CatalogLayout() {
 
     const [sort, setSort] = useState<Sort>(DEFAULT_SORT);
     const [page, setPage] = useState(DEFAULT_PAGE);
+    const [filters, setFilters] = useState<CatalogFilters | undefined>();
 
-    const goods = useSortGoods(_goods, sort);
+    const sortedGoods = useSortGoods(_goods, sort);
+    const filteredGoods = useFilterGoods(sortedGoods, filters)!;
 
     const pageGoods = useMemo(
-        () => goods?.slice(0 + countPerPage * (page - 1), countPerPage * page),
+        () => filteredGoods?.slice(0 + countPerPage * (page - 1), countPerPage * page),
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [JSON.stringify(goods), page],
+        [JSON.stringify(filteredGoods), page],
     );
-    const totalPages = useMemo(() => Math.ceil((goods?.length ?? 1) / countPerPage), [goods?.length]);
+    const totalPages = useMemo(() => Math.ceil((filteredGoods?.length ?? 1) / countPerPage), [filteredGoods?.length]);
 
     const handleChangeSort = useCallback((value: string) => {
         setSort(value as Sort);
@@ -54,7 +57,7 @@ const CatalogLayout = memo(function CatalogLayout() {
 
             <Flex direction="row">
                 <GoodsList goods={pageGoods} />
-                <CatalogSidebar />
+                <CatalogSidebar onSetFilters={setFilters} />
             </Flex>
 
             <Pagination

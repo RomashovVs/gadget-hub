@@ -3,13 +3,21 @@
 import {FormEvent, KeyboardEvent, memo, useCallback, useState} from 'react';
 import {Checkbox, CheckboxGroup, Flex, Input, RangeSlider} from '@mantine/core';
 
+import {CatalogFilters} from '@/types/filters';
 import {Button} from '@/ui';
 
 import styles from './styles.module.css';
 
-export const CatalogSidebar = memo(function CatalogSidebar() {
+interface Props {
+    onSetFilters(value: CatalogFilters): void;
+}
+
+export const CatalogSidebar = memo(function CatalogSidebar(props: Props) {
+    // TODO Remove in RangeSlider
     const [rangeValue, setRangeValue] = useState<[number, number]>([100, 900]);
     const [inputValues, setInputValues] = useState<[number, number]>([100, 900]);
+
+    const {onSetFilters} = props;
 
     const [types, setTypes] = useState<string[]>([]);
     const [colors, setColors] = useState<string[]>([]);
@@ -29,10 +37,6 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
     const handleLeftInputValueChange = useCallback((e: FormEvent<HTMLInputElement>) => {
         const newValue = Number(e.currentTarget.value);
 
-        if (Number.isNaN(newValue)) {
-            return;
-        }
-
         setInputValues((prev) => {
             return [newValue, prev[1]];
         });
@@ -45,6 +49,12 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
 
         const newValue = Number(e.currentTarget.value);
 
+        if (Number.isNaN(newValue)) {
+            setRangeValue((prev) => {
+                return [prev[0], 0];
+            });
+        }
+
         setRangeValue((prev) => {
             return [prev[0], newValue];
         });
@@ -56,15 +66,20 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
 
         const newValue = Number(e.currentTarget.value);
 
+        if (Number.isNaN(newValue)) {
+            setRangeValue((prev) => {
+                return [100, prev[1]];
+            });
+        }
+
         setRangeValue((prev) => {
             return [newValue, prev[1]];
         });
     }, []);
 
     const handleSubmit = useCallback(() => {
-        // eslint-disable-next-line no-console
-        console.log('values');
-    }, []);
+        onSetFilters({rangeCost: rangeValue, colors, types});
+    }, [colors, onSetFilters, rangeValue, types]);
 
     const hendlerReset = useCallback(() => {
         setTypes([]);
@@ -75,6 +90,8 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
     return (
         <Flex direction="column">
             <h1 className={styles.title}>Цена, ₽</h1>
+
+            {/* TODO Create RangeSlider */}
             <Flex direction="row" gap="lg" mb="1rem">
                 <div>
                     <div>От</div>
@@ -127,7 +144,7 @@ export const CatalogSidebar = memo(function CatalogSidebar() {
                 </Flex>
             </CheckboxGroup>
 
-            <Flex direction="row">
+            <Flex direction="row" mb="md">
                 <Button className={styles.button} onClick={handleSubmit}>
                     Показать
                 </Button>

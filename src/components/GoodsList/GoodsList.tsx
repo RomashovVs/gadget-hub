@@ -13,6 +13,17 @@ interface Props {
 export const GoodsList = memo(function GoodsList(props: Props) {
     const {goods} = props;
 
+    // TODO Add Alert
+    // if (!goods?.length) {
+    //     return (
+    //         <Flex wrap="wrap" w="100%">
+    //             <Alert h="10%" color="red">
+    //                 Товары не найдены
+    //             </Alert>
+    //         </Flex>
+    //     );
+    // }
+
     return (
         <Flex wrap="wrap" w="100%">
             {goods?.map((good) => <ProductCard good={good} key={good.id} showHandler />)}
