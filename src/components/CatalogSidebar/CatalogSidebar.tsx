@@ -8,14 +8,17 @@ import {Button} from '@/ui';
 
 import styles from './styles.module.css';
 
+const LEFT_RANGE_DEFAULT = 0;
+const RIGHT_RANGE_DEFAULT = 100000;
+
 interface Props {
     onSetFilters(value: CatalogFilters): void;
 }
 
 export const CatalogSidebar = memo(function CatalogSidebar(props: Props) {
     // TODO Remove in RangeSlider
-    const [rangeValue, setRangeValue] = useState<[number, number]>([100, 900]);
-    const [inputValues, setInputValues] = useState<[number, number]>([100, 900]);
+    const [rangeValue, setRangeValue] = useState<[number, number]>([LEFT_RANGE_DEFAULT, RIGHT_RANGE_DEFAULT]);
+    const [inputValues, setInputValues] = useState<[number, number]>([LEFT_RANGE_DEFAULT, RIGHT_RANGE_DEFAULT]);
 
     const {onSetFilters} = props;
 
@@ -84,8 +87,10 @@ export const CatalogSidebar = memo(function CatalogSidebar(props: Props) {
     const hendlerReset = useCallback(() => {
         setTypes([]);
         setColors([]);
-        setRangeValue([100, 900]);
-    }, []);
+        setRangeValue([LEFT_RANGE_DEFAULT, RIGHT_RANGE_DEFAULT]);
+
+        onSetFilters({rangeCost: [LEFT_RANGE_DEFAULT, RIGHT_RANGE_DEFAULT], colors: [], types: []});
+    }, [onSetFilters]);
 
     return (
         <Flex direction="column">
@@ -115,7 +120,7 @@ export const CatalogSidebar = memo(function CatalogSidebar(props: Props) {
                 minRange={0}
                 value={rangeValue}
                 min={0}
-                max={1000}
+                max={100000}
                 step={1}
                 onChange={handleRangeSliderChange}
                 label={null}

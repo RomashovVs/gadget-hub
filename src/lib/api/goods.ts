@@ -16,6 +16,8 @@ export const getGood = async (): Promise<TGood[] | null | undefined> => {
                 new_label: 1,
                 price: 1,
                 rating: 1,
+                color: 1,
+                type: 1,
             },
         )
             .lean()

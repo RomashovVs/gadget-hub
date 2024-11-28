@@ -35,31 +35,36 @@ db.goods.insertMany([
         "id": "5",
         "name": "Беспроводная акустика",
         "img_src": "/images/wireless_acoustics.svg",
-        "price": "10",
-        "rating": "5.0"
+        "price": "450",
+        "rating": "5.0",
+        "type": ["acoustics"]
     },
     {
         "id": "6",
         "name": "Смартфон 256 ГБ фиолетовый",
         "img_src": "/images/smartphone_purple.svg",
         "new_label": true,
-        "price": "1000",
-        "rating": "5.0"
+        "price": "35000",
+        "rating": "5.0",
+        "type": ["smartphone"],
+        "color": ["violet"]
     },
     {
         "id": "7",
         "name": "Смартфон 256 ГБ черный",
         "img_src": "/images/smartphone_black.svg",
-        "price": "1000",
-        "rating": "5.0"
+        "price": "25000",
+        "rating": "5.0",
+        "type": ["smartphone"]
     },
     {
         "id": "8",
         "name": "Смартфон 256 ГБ белый",
         "img_src": "/images/smartphone_white.svg",
         "new_label": true,
-        "price": "1000",
-        "rating": "5.0"
+        "price": "34000",
+        "rating": "5.0",
+        "type": ["smartphone"]
     },
     {
         "id": "9",
@@ -82,14 +87,17 @@ db.goods.insertMany([
         "name": "Фитнес-браслет ASK-B19 зеленый",
         "img_src": "/images/fitness_bracelet_green.svg",
         "price": "1000",
-        "rating": "5.0"
+        "rating": "5.0",
+        "type": ["braslette"],
+        "color": ["green"]
     },
     {
         "id": "12",
         "name": "Фитнес-браслет ASK-B19 черный",
         "img_src": "/images/fitness_bracelet_black.svg",
         "price": "1000",
-        "rating": "5.0"
+        "rating": "5.0",
+        "type": ["braslette"]
     },
     {
         "id": "13",
@@ -131,7 +139,8 @@ db.goods.insertMany([
         "name": "Чехол-подвеска силиконовый с карабином, красный",
         "img_src": "/images/silicone_red_case.svg",
         "price": "1000",
-        "rating": "5.0"
+        "rating": "5.0",
+        "color": ["red"]
     },
     {
         "id": "19",
@@ -152,14 +161,16 @@ db.goods.insertMany([
         "name": "Чехол-подвеска силиконовый с карабином, желтый",
         "img_src": "/images/silicone_yellow_case.svg",
         "price": "1000",
-        "rating": "5.0"
+        "rating": "5.0",
+        "color": ['yellow']
     },
     {
         "id": "22",
         "name": "Беспроводная акустика, серый",
         "img_src": "/images/wireless_acoustics_grey.svg",
-        "price": "1000",
-        "rating": "5.0"
+        "price": "999",
+        "rating": "5.0",
+        "type": ["acoustics"]
     },
     {
         "id": "23",
@@ -167,16 +178,19 @@ db.goods.insertMany([
         "img_src": "/images/wireless_acoustics_blue.svg",
         "hit_label": true,
         "new_label": true,
-        "price": "1000",
-        "rating": "5.0"
+        "price": "550",
+        "rating": "5.0",
+        "type": ["acoustics"],
+        "color": ["blue"]
     },
     {
         "id": "24",
         "name": "Беспроводная акустика, бежевый",
         "img_src": "/images/wireless_acoustics_beige.svg",
         "hit_label": true,
-        "price": "1000",
-        "rating": "5.0"
+        "price": "750",
+        "rating": "5.0",
+        "type": ["acoustics"]
     },
     {
         "id": "25",
@@ -204,8 +218,9 @@ db.goods.insertMany([
         "id": "28",
         "name": "Очки виртуальной реальности, смартфоны до 6,5",
         "img_src": "/images/virtual_reality_glasses.svg",
-        "price": "1000",
-        "rating": "5.0"
+        "price": "10000",
+        "rating": "5.0",
+        "type": ["smartphone"]
     },
     {
         "id": "29",

@@ -6,9 +6,21 @@ export const useFilterGoods = (goods: Good[] | undefined | null, filters: Catalo
         return goods;
     }
 
-    const {rangeCost} = filters;
+    const {rangeCost, colors, types} = filters;
 
-    const newGoods = goods?.filter((good) => Number(good.price) > rangeCost[0] && Number(good.price) < rangeCost[1]);
+    let result = goods;
 
-    return newGoods;
+    if (rangeCost.length) {
+        result = result?.filter((good) => Number(good.price) > rangeCost[0] && Number(good.price) < rangeCost[1]);
+    }
+
+    if (colors.length) {
+        result = result?.filter(({color}) => colors.some((c) => color?.includes(c)));
+    }
+
+    if (types.length) {
+        result = result?.filter(({type}) => types.some((t) => type?.includes(t)));
+    }
+
+    return result;
 };

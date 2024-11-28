@@ -27,6 +27,12 @@ const goodSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    color: {
+        type: Array,
+    },
+    type: {
+        type: Array,
+    },
 });
 
 if (mongoose.models.Good) {

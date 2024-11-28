@@ -6,4 +6,6 @@ export interface Good {
     img_src: string;
     new_label?: boolean | null;
     hit_label?: boolean | null;
+    type?: string[] | null;
+    color?: string[] | null;
 }
