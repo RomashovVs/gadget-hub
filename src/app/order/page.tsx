@@ -1,17 +1,24 @@
 'use client';
+
 import {memo} from 'react';
-import {useLocalStorage} from '@mantine/hooks';
+import dynamic from 'next/dynamic';
 
 import {EmptyOrder, Order, OrderForm} from '@/components';
+import {useLocalStorage} from '@/hooks';
+import {Good} from '@/types/goods';
 
-// `app/order/page.tsx` is the UI for the `/order` URL
-const OrderBacketLayout = memo(function OrderBacketLayout() {
-    // вынести в отдельный хук
-    const [isEmpty] = useLocalStorage({key: 'isEmptyOrder', defaultValue: false});
+// TODO Убрать dynamic, подумать как это можно сделать без использования Zustand и dynamic
+const OrderBacketLayout = dynamic(() => Promise.resolve(OrderBacket), {ssr: false});
+
+const OrderBacket = memo(function OrderBacketLayout() {
+    const [order] = useLocalStorage<(Good & {select?: boolean; count: number})[]>('order');
+
+    if (!order?.length) {
+        return <EmptyOrder />;
+    }
 
     return (
         <>
-            {isEmpty && <EmptyOrder />}
             <Order />
             <OrderForm />
         </>

@@ -16,7 +16,6 @@ interface Props {
 export const GoodDeleteModal = memo(function GoodDeleteModal(props: Props) {
     const {opened, onClose, good} = props;
 
-    // Перенести в другой компонент <ByuButtons goodId={good.id}/>
     const handleDelete = useCallback(
         (event: MouseEvent) => {
             // eslint-disable-next-line no-console

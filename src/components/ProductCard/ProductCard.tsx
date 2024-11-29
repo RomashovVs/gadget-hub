@@ -1,11 +1,11 @@
-import {memo, MouseEvent, useCallback} from 'react';
+import {memo, useCallback} from 'react';
 import Image from 'next/image';
 import {useDisclosure} from '@mantine/hooks';
-import {IconShoppingCart, IconStarFilled} from '@tabler/icons-react';
+import {IconStarFilled} from '@tabler/icons-react';
 
 import {Good} from '@/types/goods';
-import {Button} from '@/ui';
 
+import {BuyButtons} from '../BuyButtons';
 import {GoodModal} from '../GoodModal';
 import styles from './styles.module.css';
 
@@ -19,14 +19,6 @@ export const ProductCard = memo(function ProductCard(props: Props) {
     const [openModal, {open, close}] = useDisclosure(false);
 
     const handleOpenModal = useCallback(() => (showHandler ? open() : null), [open, showHandler]);
-
-    // Перенести в другой компонент <BuyButtons goodId={good.id}/>
-    const handleBuy = useCallback((event: MouseEvent) => {
-        // eslint-disable-next-line no-console
-        console.log('покупаем');
-
-        event.stopPropagation();
-    }, []);
 
     return (
         <>
@@ -49,11 +41,7 @@ export const ProductCard = memo(function ProductCard(props: Props) {
                     <span className={styles.ratingText}>{good.rating}</span>
                 </div>
 
-                {showHandler ? (
-                    <Button className={styles.button} leftSection={<IconShoppingCart size={16} />} onClick={handleBuy}>
-                        В корзину
-                    </Button>
-                ) : null}
+                {showHandler ? <BuyButtons good={good} /> : null}
             </div>
 
             {showHandler ? <GoodModal opened={openModal} onClose={close} good={good} /> : null}
