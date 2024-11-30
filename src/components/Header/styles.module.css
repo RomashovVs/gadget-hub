@@ -33,3 +33,19 @@
 
     display: flex;
 }
+
+.badge {
+    height: 24px;
+
+    background: #ff60c3;
+
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+
+    color: #ffffff;
+}

@@ -35,7 +35,7 @@ const goodSchema = new mongoose.Schema({
     },
 });
 
-if (mongoose.models.Good) {
+if (mongoose.models?.Good) {
     delete mongoose.models.Good;
 }
 

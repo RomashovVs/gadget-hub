@@ -1,15 +1,12 @@
 import {memo} from 'react';
 import {Table} from '@mantine/core';
 
+import {OrderDetail} from '@/types/order';
+
 import styles from './styles.module.css';
 
 interface Props {
-    details: {
-        number: string;
-        at: string;
-        countDevices: number;
-        totalCost: number;
-    }[];
+    details: OrderDetail[] | null | undefined;
 }
 
 export const DetailsOrders = memo(function DetailsOrders(props: Props) {
@@ -19,10 +16,10 @@ export const DetailsOrders = memo(function DetailsOrders(props: Props) {
         <div className={styles.conatiner}>
             <Table>
                 <Table.Tbody className={styles.text}>
-                    {details.map((detail) => (
+                    {details?.map((detail) => (
                         <Table.Tr key={detail.number}>
                             <Table.Td p={0}>
-                                № {detail.number} от {detail.at}
+                                № {detail.number} от {detail.at.toLocaleDateString()}
                             </Table.Td>
                             <Table.Td>{detail.countDevices} товар</Table.Td>
                             <Table.Td>

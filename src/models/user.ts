@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-if (mongoose.models.User) {
+if (mongoose.models?.User) {
     delete mongoose.models.User;
 }
 
