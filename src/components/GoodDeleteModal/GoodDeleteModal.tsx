@@ -1,7 +1,8 @@
-import {memo, MouseEvent, useCallback} from 'react';
+import {memo, useCallback} from 'react';
 import {Flex, Modal} from '@mantine/core';
 import {IconX} from '@tabler/icons-react';
 
+import {useLocalStorage} from '@/hooks';
 import {Good} from '@/types/goods';
 import {Button} from '@/ui';
 
@@ -16,17 +17,13 @@ interface Props {
 export const GoodDeleteModal = memo(function GoodDeleteModal(props: Props) {
     const {opened, onClose, good} = props;
 
-    const handleDelete = useCallback(
-        (event: MouseEvent) => {
-            // eslint-disable-next-line no-console
-            console.log('удаляем');
+    // TODO Добавить хук useOrder, который будет возвращать основные методы работы с заказом: удаление, добавление и т.д.
+    const [order, setOrder] = useLocalStorage<(Good & {select?: boolean; count: number})[]>('order');
 
-            onClose();
-
-            event.stopPropagation();
-        },
-        [onClose],
-    );
+    const handleDelete = useCallback(() => {
+        setOrder([...order].filter(({id}) => id !== good.id));
+        onClose();
+    }, [good.id, onClose, order, setOrder]);
 
     return (
         <Modal.Root opened={opened} onClose={onClose} size="30%">

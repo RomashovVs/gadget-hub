@@ -1,12 +1,13 @@
-import {ChangeEventHandler, memo, useState} from 'react';
+import {ChangeEventHandler, memo} from 'react';
 import Image from 'next/image';
-import {Checkbox, Flex, Table} from '@mantine/core';
+import {Checkbox, Table} from '@mantine/core';
 import {useDisclosure} from '@mantine/hooks';
 import {IconX} from '@tabler/icons-react';
 
 import {Good} from '@/types/goods';
 import {Button} from '@/ui';
 
+import {BuyButtons} from '../BuyButtons';
 import {GoodDeleteModal} from '../GoodDeleteModal';
 import styles from './styles.module.css';
 
@@ -18,7 +19,6 @@ interface Props {
 
 export const OrderRow = memo(function OrderRow(props: Props) {
     const {good, checked, onChangeChecked} = props;
-    const [count, setCount] = useState(1);
     const [opened, {close, open}] = useDisclosure(false);
 
     return (
@@ -35,15 +35,7 @@ export const OrderRow = memo(function OrderRow(props: Props) {
                 <div className={styles.name}>{good.name}</div>
             </Table.Td>
             <Table.Td>
-                <Flex gap="md">
-                    <Button disabled={count === 1} onClick={() => setCount(count - 1)} className={styles.control}>
-                        -
-                    </Button>
-                    <div className={styles.count}>{count}</div>
-                    <Button className={styles.control} onClick={() => setCount(count + 1)}>
-                        +
-                    </Button>
-                </Flex>
+                <BuyButtons good={good} />
             </Table.Td>
             <Table.Td>
                 <div className={styles.price}>{good.price} ₽</div>
