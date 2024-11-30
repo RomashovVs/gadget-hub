@@ -1,13 +1,35 @@
-import {memo} from 'react';
+import {FormEvent, memo, useCallback} from 'react';
 import {Checkbox, Flex, Group, Radio, Select, TextInput} from '@mantine/core';
 import {useForm} from '@mantine/form';
 
+import {useLocalStorage} from '@/hooks';
+import {addOrderDetails} from '@/lib/api/order';
+import {Good} from '@/types/goods';
 import {Button} from '@/ui';
 
 import {dataPayForm, defaultPayForm} from './constants';
 import styles from './styles.module.css';
 
 export const OrderForm = memo(function OrderForm() {
+    // TODO Убрать в общий хук, чтобы не знать ничего о типах и использовать только значения из хука {count, totalPrice}
+    const [order, setOrder] = useLocalStorage<(Good & {select?: boolean; count: number})[]>('order');
+
+    const count = order?.reduce((prevCount, {count, select}) => {
+        if (select) {
+            return prevCount + count;
+        }
+
+        return prevCount;
+    }, 0);
+
+    const totalPrice = order?.reduce((prevCount, good) => {
+        if (good.select) {
+            return prevCount + Number(good.price ?? 0) * good.count;
+        }
+
+        return prevCount;
+    }, 0);
+
     const form = useForm({
         mode: 'uncontrolled',
         clearInputErrorOnChange: false,
@@ -25,12 +47,31 @@ export const OrderForm = memo(function OrderForm() {
         },
     });
 
+    const handleSubmit = useCallback(
+        (values: unknown, event: FormEvent | undefined) => {
+            event?.preventDefault();
+
+            void (async () =>
+                await addOrderDetails({
+                    number: String(Math.floor(100000 + Math.random() * 900000)),
+                    at: new Date(),
+                    countDevices: count,
+                    totalCost: totalPrice,
+                }))();
+
+            setOrder([...order].filter(({select}) => !select));
+
+            // eslint-disable-next-line no-console
+            console.log(values);
+        },
+        [count, order, setOrder, totalPrice],
+    );
+
     return (
         <>
             <div className={styles.title}>Оформление заказа</div>
             <div className={styles.conatiner}>
-                {/* eslint-disable-next-line no-console */}
-                <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                <form onSubmit={form.onSubmit(handleSubmit)}>
                     <Flex gap="1rem" direction="column" w="50%">
                         <Flex direction="row" gap="md">
                             <TextInput
@@ -79,7 +120,7 @@ export const OrderForm = memo(function OrderForm() {
                             {...form.getInputProps('needPackage', {type: 'checkbox'})}
                         />
 
-                        <Button className={styles.button} type="submit">
+                        <Button className={styles.button} type="submit" disabled={count === 0}>
                             Оформить заказ
                         </Button>
                     </Flex>
