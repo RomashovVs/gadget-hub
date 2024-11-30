@@ -12,8 +12,9 @@ import styles from './styles.module.css';
 
 // TODO
 // Исправить компонент, разобраться с useEffect. В теории его быть тут не должно,
-// мы должны в localStorage записывать в каком-то хуке - useAuthenticate(),
+// мы должны в sessionStorage записывать в каком-то хуке - useAuthenticate(),
 // в котором и про ошибку аутентификации будем знать и про успешность выполнения.
+// Прочитать про cookei и session в Next, возможно стоит использовать такой подход.
 
 export const Login = memo(function Login() {
     const form = useForm({

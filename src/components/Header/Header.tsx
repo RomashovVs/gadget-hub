@@ -7,11 +7,14 @@ import {AuthGuard} from '../AuthGuard';
 import {LoginButton} from './LoginButton';
 import styles from './styles.module.css';
 
+// TODO В константы перенести route
 export const Header = memo(function Header() {
     return (
         <div className={styles.header}>
-            <h2 className={styles.gadget}>Gadget</h2>
-            <h2 className={styles.hub}>Hub</h2>
+            <a href="/" className={styles.mainLink}>
+                <h2 className={styles.gadget}>Gadget</h2>
+                <h2 className={styles.hub}>Hub</h2>
+            </a>
 
             <div className={styles.buttonSection}>
                 <AuthGuard>

@@ -1,6 +1,7 @@
 'use client';
 
 import {memo, useCallback} from 'react';
+import {useRouter} from 'next/navigation';
 import {useSessionStorage} from '@mantine/hooks';
 import {IconUserFilled} from '@tabler/icons-react';
 
@@ -11,10 +12,12 @@ import styles from './styles.module.css';
 export const LoginButton = memo(function LoginButton() {
     // TODO Переместить в хук useIsAuthenticate();
     const [isAuth, setAuth] = useSessionStorage({key: 'auth', defaultValue: false});
+    const router = useRouter();
 
     const logOut = useCallback(() => {
         setAuth(false);
-    }, [setAuth]);
+        router.push('/');
+    }, [router, setAuth]);
 
     if (isAuth) {
         return (
