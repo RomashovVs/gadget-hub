@@ -1,13 +1,9 @@
 import {Good} from '@/types/goods';
 import {Sort} from '@/types/sort';
 
-const compareSortNew = (a: Good, b: Good) => {
-    return a.new_label === b.new_label ? 0 : a.new_label ? -1 : 1;
-};
+const compareSortNew = (a: Good, b: Good) => (a.new_label === b.new_label ? 0 : a.new_label ? -1 : 1);
 
-const compareSortHit = (a: Good, b: Good) => {
-    return a.hit_label === b.hit_label ? 0 : a.hit_label ? -1 : 1;
-};
+const compareSortHit = (a: Good, b: Good) => (a.hit_label === b.hit_label ? 0 : a.hit_label ? -1 : 1);
 
 export const useSortGoods = (_goods: Good[] | undefined | null, sort: Sort) => {
     // TODO Убрать на бэк, тут не место

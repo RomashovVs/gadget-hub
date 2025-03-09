@@ -12,6 +12,7 @@ import {Footer, Header} from '@/components';
 import '../ui/theme';
 import {Provider} from './Provider';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
     title: 'Gadget Hub',
     description: 'Project SPbPU',

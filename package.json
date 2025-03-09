@@ -2,11 +2,13 @@
     "name": "gadget-hub",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "eslint": "eslint . --max-warnings 5"
     },
     "dependencies": {
         "@mantine/carousel": "7.12.2",
@@ -28,22 +30,26 @@
         "slick-carousel": "1.8.1"
     },
     "devDependencies": {
+        "@eslint/js": "^9.22.0",
         "@types/node": "20",
         "@types/react": "18",
         "@types/react-dom": "18",
         "@types/react-slick": "0.23.13",
         "@typescript-eslint/parser": "8.6.0",
-        "eslint": "8",
+        "eslint": "^8.57.1",
         "eslint-config-next": "14.2.12",
         "eslint-config-prettier": "9.1.0",
         "eslint-plugin-prettier": "5.2.1",
         "eslint-plugin-react": "7.35.0",
+        "eslint-plugin-react-compiler": "^19.0.0-beta-40c6c23-20250301",
         "eslint-plugin-react-hooks": "4.6.2",
         "eslint-plugin-react-refresh": "0.4.9",
         "eslint-plugin-simple-import-sort": "12.1.1",
+        "globals": "^16.0.0",
         "prettier": "3.3.3",
         "prettier-eslint": "16.1.2",
         "sass": "1.80.6",
-        "typescript": "5"
+        "typescript": "5.5",
+        "typescript-eslint": "^8.26.0"
     }
 }

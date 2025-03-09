@@ -33,16 +33,12 @@ export const CatalogSidebar = memo(function CatalogSidebar(props: Props) {
     const handleRightInputValueChange = useCallback((e: FormEvent<HTMLInputElement>) => {
         const newValue = Number(e.currentTarget.value);
 
-        setInputValues((prev) => {
-            return [prev[0], newValue];
-        });
+        setInputValues((prev) => [prev[0], newValue]);
     }, []);
     const handleLeftInputValueChange = useCallback((e: FormEvent<HTMLInputElement>) => {
         const newValue = Number(e.currentTarget.value);
 
-        setInputValues((prev) => {
-            return [newValue, prev[1]];
-        });
+        setInputValues((prev) => [newValue, prev[1]]);
     }, []);
 
     const handleRightSliderChange = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
@@ -53,14 +49,10 @@ export const CatalogSidebar = memo(function CatalogSidebar(props: Props) {
         const newValue = Number(e.currentTarget.value);
 
         if (Number.isNaN(newValue)) {
-            setRangeValue((prev) => {
-                return [prev[0], 0];
-            });
+            setRangeValue((prev) => [prev[0], 0]);
         }
 
-        setRangeValue((prev) => {
-            return [prev[0], newValue];
-        });
+        setRangeValue((prev) => [prev[0], newValue]);
     }, []);
     const handleLeftSliderChange = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key !== 'Enter') {
@@ -70,14 +62,10 @@ export const CatalogSidebar = memo(function CatalogSidebar(props: Props) {
         const newValue = Number(e.currentTarget.value);
 
         if (Number.isNaN(newValue)) {
-            setRangeValue((prev) => {
-                return [100, prev[1]];
-            });
+            setRangeValue((prev) => [100, prev[1]]);
         }
 
-        setRangeValue((prev) => {
-            return [newValue, prev[1]];
-        });
+        setRangeValue((prev) => [newValue, prev[1]]);
     }, []);
 
     const handleSubmit = useCallback(() => {

@@ -25,7 +25,7 @@ export const Login = memo(function Login() {
             password: '',
         },
     });
-    const [_, setSessionAuth] = useSessionStorage({key: 'auth', defaultValue: false});
+    const [, setSessionAuth] = useSessionStorage({key: 'auth', defaultValue: false});
 
     const [errorAuth, setErrorAuth] = useState('');
     const [auth, setAuth] = useState<boolean | undefined>(undefined);

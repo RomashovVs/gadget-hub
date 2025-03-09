@@ -16,13 +16,13 @@ export const Contacts = memo(function Contacts() {
                     <div className={styles.phone}>8 (800) 678-34-24</div>
                 </Flex>
 
-                {/* email */}
+                {/* Email */}
                 <Flex direction="row" align="center" gap="1rem">
                     <Image src="iconEmail.svg" alt="EmailIconBlack" width={40} height={40} />
                     <div className={styles.text}>gadget@hub.ru</div>
                 </Flex>
 
-                {/* adres */}
+                {/* Adres */}
                 <Flex direction="row" align="center" gap="1rem">
                     <Image src="mapPinIcon.svg" alt="PhoneIconBlack" width={40} height={40} />
                     <div className={styles.text}>Санкт-Петербург, ул. Барочная, д.7, корпус 2</div>
