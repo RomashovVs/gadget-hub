@@ -1,5 +1,6 @@
 // eslint-disable-next-line simple-import-sort/imports
 import type {Metadata} from 'next';
+import {ReactNode} from 'react';
 
 // !!Important
 import './globals.css';
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) {
     return (
         <html lang="en">

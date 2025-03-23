@@ -7,9 +7,6 @@ import {EmptyOrder, Order, OrderForm} from '@/components';
 import {useLocalStorage} from '@/hooks';
 import {Good} from '@/types/goods';
 
-// TODO Убрать dynamic, подумать как это можно сделать без использования Zustand и dynamic
-const OrderBacketLayout = dynamic(() => Promise.resolve(OrderBacket), {ssr: false});
-
 const OrderBacket = memo(function OrderBacketLayout() {
     const [order] = useLocalStorage<(Good & {select?: boolean; count: number})[]>('order');
 
@@ -24,5 +21,8 @@ const OrderBacket = memo(function OrderBacketLayout() {
         </>
     );
 });
+
+// TODO Убрать dynamic, подумать как это можно сделать без использования Zustand и dynamic
+const OrderBacketLayout = dynamic(() => Promise.resolve(OrderBacket), {ssr: false});
 
 export default OrderBacketLayout;

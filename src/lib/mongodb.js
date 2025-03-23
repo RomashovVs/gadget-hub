@@ -1,3 +1,5 @@
+/*global process, global, console*/
+
 import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -30,8 +32,10 @@ async function dbConnect() {
     }
 
     try {
+        // eslint-disable-next-line require-atomic-updates
         cached.conn = await cached.promise;
     } catch (e) {
+        // eslint-disable-next-line require-atomic-updates
         cached.promise = null;
         throw e;
     }
