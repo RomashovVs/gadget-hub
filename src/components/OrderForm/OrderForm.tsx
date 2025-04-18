@@ -62,7 +62,7 @@ export const OrderForm = memo(function OrderForm() {
             setOrder([...order].filter(({select}) => !select));
 
             // eslint-disable-next-line no-console
-            console.log(values);
+            // console.log(values);
         },
         [count, order, setOrder, totalPrice],
     );
@@ -77,11 +77,13 @@ export const OrderForm = memo(function OrderForm() {
                             <TextInput
                                 w="100%"
                                 label="Телефон"
+                                data-testid="Телефон"
                                 key={form.key('phone')}
                                 {...form.getInputProps('phone')}
                             />
 
                             <TextInput
+                                data-testid="Email"
                                 withAsterisk
                                 label="Email"
                                 w="100%"
@@ -96,13 +98,14 @@ export const OrderForm = memo(function OrderForm() {
                             {...form.getInputProps('choseDelivery')}
                         >
                             <Group mt="xs">
-                                <Radio value="selfPickup" label="Самовывоз" />
-                                <Radio value="delivery" label="Доставка" />
+                                <Radio value="selfPickup" label="Самовывоз" data-testid="Самовывоз" />
+                                <Radio value="delivery" label="Доставка" data-testid="Доставка" />
                             </Group>
                         </Radio.Group>
 
                         {form.getValues().choseDelivery === 'delivery' && (
                             <TextInput
+                                data-testid="Адрес"
                                 withAsterisk
                                 w="100%"
                                 label="Адрес"
@@ -111,16 +114,27 @@ export const OrderForm = memo(function OrderForm() {
                             />
                         )}
 
-                        <Select label="Способ оплаты" data={dataPayForm} {...form.getInputProps('payForm')} />
+                        <Select
+                            data-testid="Способ оплаты"
+                            label="Способ оплаты"
+                            data={dataPayForm}
+                            {...form.getInputProps('payForm')}
+                        />
 
                         <Checkbox
+                            data-testid="Нужна упаковка"
                             mt="md"
                             label="Нужна упаковка"
                             key={form.key('needPackage')}
                             {...form.getInputProps('needPackage', {type: 'checkbox'})}
                         />
 
-                        <Button className={styles.button} type="submit" disabled={count === 0}>
+                        <Button
+                            className={styles.button}
+                            type="submit"
+                            disabled={count === 0}
+                            data-testid="Оформить заказ"
+                        >
                             Оформить заказ
                         </Button>
                     </Flex>

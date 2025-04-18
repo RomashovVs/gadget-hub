@@ -18,11 +18,11 @@ export const GoodModal = memo(function GoodModal(props: Props) {
     const {opened, onClose, good} = props;
 
     return (
-        <Modal.Root opened={opened} onClose={onClose} centered size="65.4%">
+        <Modal.Root opened={opened} onClose={onClose} centered size="65.4%" data-testid="GoodModal">
             <Modal.Overlay />
             <Modal.Content className={styles.content}>
                 <Modal.Header className={styles.header}>
-                    <Modal.CloseButton className={styles.close} icon={<IconX size={20} />} />
+                    <Modal.CloseButton className={styles.close} icon={<IconX size={20} />} data-testid="close" />
                 </Modal.Header>
                 <Modal.Body className={styles.body}>
                     <Flex direction="column" align="end">

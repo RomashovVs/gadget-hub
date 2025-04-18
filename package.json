@@ -1,6 +1,6 @@
 {
     "name": "gadget-hub",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -8,7 +8,9 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "eslint": "eslint . --max-warnings 5"
+        "eslint": "eslint . --max-warnings 5",
+        "test": "vitest run",
+        "coverage": "vitest run --coverage"
     },
     "dependencies": {
         "@mantine/carousel": "7.12.2",
@@ -19,8 +21,10 @@
         "@tabler/icons-react": "3.17.0",
         "@tanstack/react-query": "5.61.3",
         "@tanstack/react-query-next-experimental": "5.61.3",
+        "@testing-library/jest-dom": "^6.6.3",
         "classnames": "2.5.1",
         "embla-carousel-react": "7.1.0",
+        "eslint-plugin-vitest": "^0.5.4",
         "mongodb": "6.11.0",
         "mongoose": "8.8.2",
         "next": "14.2.12",
@@ -31,11 +35,15 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.22.0",
+        "@testing-library/dom": "10.4.0",
+        "@testing-library/react": "16.2.0",
         "@types/node": "20",
         "@types/react": "18",
         "@types/react-dom": "18",
         "@types/react-slick": "0.23.13",
         "@typescript-eslint/parser": "8.6.0",
+        "@vitejs/plugin-react": "^4.3.4",
+        "@vitest/coverage-v8": "^3.0.9",
         "eslint": "^8.57.1",
         "eslint-config-next": "14.2.12",
         "eslint-config-prettier": "9.1.0",
@@ -46,10 +54,13 @@
         "eslint-plugin-react-refresh": "0.4.9",
         "eslint-plugin-simple-import-sort": "12.1.1",
         "globals": "^16.0.0",
+        "jsdom": "^26.0.0",
         "prettier": "3.3.3",
         "prettier-eslint": "16.1.2",
         "sass": "1.80.6",
         "typescript": "5.5",
-        "typescript-eslint": "^8.26.0"
+        "typescript-eslint": "8.26.0",
+        "vite-tsconfig-paths": "5.1.4",
+        "vitest": "3.0.9"
     }
 }

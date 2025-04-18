@@ -26,8 +26,8 @@ export const ProductInfo = memo(function ProductInfo(props: Props) {
             <Flex direction="column" justify="space-between">
                 <div>
                     <div className={styles.name}>{good.name}</div>
-                    <div className={styles.rating}>
-                        <IconStarFilled size={20} className={styles.star} />
+                    <div className={styles.rating} data-testid="rating-container">
+                        <IconStarFilled size={20} className={styles.star} data-testid="star-icon" />
                         <span className={styles.ratingText}>{good.rating}</span>
                     </div>
                 </div>

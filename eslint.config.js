@@ -4,6 +4,7 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import vitestPlugin from 'eslint-plugin-vitest';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import js from '@eslint/js';
@@ -195,6 +196,19 @@ const eslintConfig = tseslint.config(
         files: ['src/shared/context/**/*', 'testing/**/*'],
         rules: {
             'react-refresh/only-export-components': 'off',
+        },
+    },
+    {
+        files: ['**/*.test.{ts,tsx}'],
+        env: {
+            'vitest-globals': true, // Включаем глобальные переменные Vitest
+        },
+        plugins: {
+            'vitest-globals': vitestPlugin,
+        },
+        rules: {
+            'no-console': 'off',
+            'max-params': 'off', // Отключаем для тестов, где могут быть колбэки с параметрами
         },
     },
 );
