@@ -23,7 +23,7 @@ export const OrderRow = memo(function OrderRow(props: Props) {
 
     return (
         <Table.Tr className={styles.tr}>
-            <Table.Td w="1rem" className={styles.tableCheckbox}>
+            <Table.Td w="1rem" valign="middle" className={styles.tableCheckbox}>
                 <Checkbox checked={Boolean(checked)} onChange={onChangeChecked} />
             </Table.Td>
             <Table.Td>

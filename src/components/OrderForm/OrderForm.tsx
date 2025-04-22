@@ -3,32 +3,25 @@ import {Checkbox, Flex, Group, Radio, Select, TextInput} from '@mantine/core';
 import {useForm} from '@mantine/form';
 
 import {useLocalStorage} from '@/hooks';
+import {useGoodsOrderCount} from '@/hooks/useGoodsOrderCount';
+import {useOrderTotalPrice} from '@/hooks/useOrderTotalPrice';
 import {addOrderDetails} from '@/lib/api/order';
-import {Good} from '@/types/goods';
+import {OrderElement} from '@/types/order';
 import {Button} from '@/ui';
 
 import {dataPayForm, defaultPayForm} from './constants';
+import {getOrderNumber} from './logic';
 import styles from './styles.module.css';
+
+const EMAIL_REGEXP = /^\S+@\S+$/;
 
 export const OrderForm = memo(function OrderForm() {
     // TODO Убрать в общий хук, чтобы не знать ничего о типах и использовать только значения из хука {count, totalPrice}
-    const [order, setOrder] = useLocalStorage<(Good & {select?: boolean; count: number})[]>('order');
+    const [order, setOrder] = useLocalStorage<OrderElement[]>('order');
 
-    const count = order?.reduce((prevCount, {count, select}) => {
-        if (select) {
-            return prevCount + count;
-        }
+    const count = useGoodsOrderCount(order);
 
-        return prevCount;
-    }, 0);
-
-    const totalPrice = order?.reduce((prevCount, good) => {
-        if (good.select) {
-            return prevCount + Number(good.price ?? 0) * good.count;
-        }
-
-        return prevCount;
-    }, 0);
+    const totalPrice = useOrderTotalPrice(order);
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -42,7 +35,7 @@ export const OrderForm = memo(function OrderForm() {
             addres: '',
         },
         validate: {
-            email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Error'),
+            email: (value) => (EMAIL_REGEXP.test(value) ? null : 'Error'),
             addres: (value, {choseDelivery}) => (value.length > 0 || choseDelivery !== 'delivery' ? null : 'Error'),
         },
     });
@@ -53,7 +46,7 @@ export const OrderForm = memo(function OrderForm() {
 
             void (async () =>
                 await addOrderDetails({
-                    number: String(Math.floor(100000 + Math.random() * 900000)),
+                    number: getOrderNumber(),
                     at: new Date(),
                     countDevices: count,
                     totalCost: totalPrice,

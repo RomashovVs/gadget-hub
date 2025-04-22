@@ -6,7 +6,9 @@ import {useListState} from '@mantine/hooks';
 import {IconX} from '@tabler/icons-react';
 
 import {useLocalStorage} from '@/hooks';
-import {Good} from '@/types/goods';
+import {useGoodsOrderCount} from '@/hooks/useGoodsOrderCount';
+import {useOrderTotalPrice} from '@/hooks/useOrderTotalPrice';
+import {OrderElement} from '@/types/order';
 import {Button} from '@/ui';
 
 import {OrderRow} from './OrderRow';
@@ -14,23 +16,11 @@ import {SummaryOrder} from './SummaryOrder';
 import styles from './styles.module.css';
 
 export const Order = memo(function Order() {
-    const [order, setOrder] = useLocalStorage<(Good & {select?: boolean; count: number})[]>('order');
+    const [order, setOrder] = useLocalStorage<OrderElement[]>('order');
 
-    const count = order?.reduce((prevCount, {count, select}) => {
-        if (select) {
-            return prevCount + count;
-        }
+    const count = useGoodsOrderCount(order);
 
-        return prevCount;
-    }, 0);
-
-    const totalPrice = order?.reduce((prevCount, good) => {
-        if (good.select) {
-            return prevCount + Number(good.price ?? 0) * good.count;
-        }
-
-        return prevCount;
-    }, 0);
+    const totalPrice = useOrderTotalPrice(order);
 
     const [values, handlers] = useListState(order?.map((good) => good.select));
 
